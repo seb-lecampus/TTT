@@ -1,12 +1,15 @@
 package fr.CDA25.SebIsma.players;
 
 import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.puissance4.Puissance4;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
+import fr.CDA25.SebIsma.ui.InteractionUtilisateur;
 import fr.CDA25.SebIsma.ui.View;
 
 public class HumanPlayer extends Player {
 
     private View view;
+    private final InteractionUtilisateur interaction = new InteractionUtilisateur();
     public HumanPlayer(char representation, View view) {
         super(representation);
         this.view = view;
@@ -14,14 +17,25 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] getMoveFromPlayer(Board board) {
-        return new int[]{0, 0};
+        int[] chosenCoord = new int[2];
+        this.view.displayMessage("choisi la ligne");
+        chosenCoord[0] = this.interaction.askInt();
+        this.view.displayMessage("choisi la colonne");
+        chosenCoord[1] = this.interaction.askInt();
+        return chosenCoord;
+    }
+    public int[] getMoveFromPlayer(Puissance4 board) {
+        int[] chosenCoord = new int[2];
+        this.view.displayMessage("choisi la colonne");
+        chosenCoord[0] = this.interaction.askInt();
+        return chosenCoord;
     }
 
     @Override
     public void informPlayerTurn(Board board, Player player, int[] move) {
         this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
         this.showLastMove(move);
-        this.view.displayBoard(board);
+        this.view.displayBoard(board, move);
     }
     private void showLastMove(int[] move) {
         String axis="" ;

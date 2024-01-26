@@ -12,6 +12,9 @@ public class Terminal implements View{
 
     private final InteractionUtilisateur interaction = new InteractionUtilisateur();
 
+
+
+
     @Override
     public Board getGame(Player[] players) {
         // todo automatisation for new game
@@ -55,10 +58,9 @@ public class Terminal implements View{
             this.lignBord(board.getSizeX());
             for (int j = 0; j < board.getSizeY() ; j++) {
                 if(lastMove[1] == i && lastMove[0] == j){
-                    color = "\\u001B[31m";
-                }else{
-                    System.out.println(color + board.getBoard()[i][j].getRepresentation());
+                    color = "\u001B[31m";
                 }
+                System.out.println(color + board.getBoard()[i][j].getRepresentation()+ "\u001B[0m");
             }
         }
     }
@@ -71,7 +73,7 @@ public class Terminal implements View{
 
     @Override
     public void displayMessage(String message) {
-        System.out.print(message);
+        System.out.println(message);
     }
 }
 
