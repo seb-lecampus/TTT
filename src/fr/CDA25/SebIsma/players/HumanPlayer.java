@@ -60,5 +60,6 @@ public class HumanPlayer extends Player {
             System.out.println("t'es nul");
         }
     }
-    }
+
 }
+

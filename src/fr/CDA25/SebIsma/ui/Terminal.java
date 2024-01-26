@@ -53,21 +53,27 @@ public class Terminal implements View{
     }
 
     public void displayBoard(Board board, int[] lastMove){
-            String color = "";
+
         for (int i = 0; i < board.getSizeX() ; i++) {
+
             this.lignBord(board.getSizeX());
+            System.out.println();
             for (int j = 0; j < board.getSizeY() ; j++) {
+                String color = "";
                 if(lastMove[1] == i && lastMove[0] == j){
                     color = "\u001B[31m";
                 }
-                System.out.println(color + board.getBoard()[i][j].getRepresentation()+ "\u001B[0m");
+                System.out.print(color + board.getBoard()[i][j].getRepresentation()+ "\u001B[0m");
             }
+            System.out.println("|");
         }
+        this.lignBord(board.getSizeX());
+        System.out.println();
     }
 
     private void lignBord(int boardSize){
         for (int i = 0; i < boardSize; i++) {
-            System.out.print("-----");
+            System.out.print("----");
         }
     }
 

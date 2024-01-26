@@ -25,7 +25,15 @@ public int getSizeY() {
     this.players = players;
     this.sizeX = sizeX;
     this.sizeY = sizeY;
-    // todo Cell[][]
+    board = new Cell[this.sizeX][this.sizeY];
+    this.buildBoard(this.board);
+}
+private void buildBoard(Cell[][] board){
+    for (int i = 0; i < this.getSizeX() ; i++) {
+        for (int j = 0; j < getSizeY(); j++) {
+           board[i][j] = new Cell();
+        }
+    }
 }
 
 public void play(){
@@ -33,7 +41,7 @@ public void play(){
     Player current;
     int[] last_move;
 
-    while (!isEnd()){
+    while (isEnd()){
         current = players[ tour % players.length];
         last_move = current.getMoveFromPlayer(this);
         for(Player p : players){
