@@ -3,9 +3,10 @@ package fr.CDA25.SebIsma.games.boad;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public abstract class Board {
-private Cell[][] board;
+protected Cell[][] board;
 
-private Player[] players;
+protected Player[] players;
+protected Player winner;
 
 private int sizeX, sizeY;
 
@@ -26,22 +27,35 @@ public Board(Player[] players, int sizeX, int sizeY){
 
 public void play(){
     int tour = 0;
-    Player current;
-    int[] last_move;
+    Player current, winner=null;
+    int[] last_move = {0, 0};
 
-    while (!isEnd()){
+    do {
         current = players[ tour % players.length];
-        last_move = current.getMoveFromPlayer(this);
+
+        do {
+            last_move = current.getMoveFromPlayer(this);
+        } while(!isValidMove(last_move));
+
+        last_move = processMove(last_move);
+        board[last_move[1]][last_move[0]].setOwner(current);
+
         for(Player p : players){
             if(p != current)
                 p.informPlayerTurn(this, current, last_move);
         }
-    }
+    } while(!isEnd(last_move));
+
+    for(Player p : players)
+        p.gameEnd(winner);
 }
 
 
-protected abstract boolean isEnd();
+protected abstract boolean isEnd(int[] last_move);
 
+protected int[] processMove(int[] last_move){
+    return last_move;
+}
 protected boolean checkDir(int[] move, int[] dir, int consecutive) {
     int[] cpy = {move[0], move[1]}; // copy of move
     int[] next = {move[0]+dir[0], move[1]+dir[1]}; // next cell in the dir
@@ -83,4 +97,15 @@ protected boolean isOnBoard(int[] move){
     return true;
 }
 
+protected boolean isValidMove(int[] move){
+    return isOnBoard(move) && board[move[1]][move[0]].getOwner() == null;
+}
+
+protected boolean checkFull() {
+    for(var line : this.board)
+        for(Cell cell : line)
+            if(cell.getOwner() == null)
+                return false;
+    return true;
+}
 }
