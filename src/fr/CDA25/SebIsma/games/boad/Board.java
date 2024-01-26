@@ -44,6 +44,8 @@ public void play(){
             if(p != current)
                 p.informPlayerTurn(this, current, last_move);
         }
+
+        ++tour;
     } while(!isEnd(last_move));
 
     for(Player p : players)
