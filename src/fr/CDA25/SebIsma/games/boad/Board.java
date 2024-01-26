@@ -17,7 +17,11 @@ public int getSizeY() {
     return sizeY;
 }
 
-public Board(Player[] players, int sizeX, int sizeY){
+    public Cell[][] getBoard() {
+        return board;
+    }
+
+    public Board(Player[] players, int sizeX, int sizeY){
     this.players = players;
     this.sizeX = sizeX;
     this.sizeY = sizeY;

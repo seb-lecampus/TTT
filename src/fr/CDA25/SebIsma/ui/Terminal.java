@@ -1,5 +1,6 @@
 package fr.CDA25.SebIsma.ui;
 import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.boad.Cell;
 import fr.CDA25.SebIsma.games.gomoku.Gomoku;
 import fr.CDA25.SebIsma.games.puissance4.Puissance4;
 import fr.CDA25.SebIsma.games.tictactoe.TicTacToe;
@@ -47,6 +48,24 @@ public class Terminal implements View{
         }
 
     }
+
+    public void displayBoard(Board board){
+
+        for (Cell[] cellRow : board.getBoard()){
+            this.lignBord(board);
+            for(Cell cell : cellRow){
+                System.out.println(cell.getRepresentation());
+            }
+            this.lignBord(board);
+        }
+    }
+
+    private void lignBord(Board board){
+        for (int i = 0; i < board.getSizeX(); i++) {
+            System.out.print("-----");
+        }
+    }
+
 }
 
 
