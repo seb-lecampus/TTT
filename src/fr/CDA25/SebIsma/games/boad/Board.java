@@ -9,6 +9,13 @@ public abstract class Board {
 
  private int sizeX, sizeY;
 
+ public Board(Player[] players, int sizeX, int sizeY){
+     this.players = players;
+     this.sizeX = sizeX;
+     this.sizeY = sizeY;
+     // todo Cell[][]
+ }
+
 public void play(){
     int tour = 0;
     Player current;
