@@ -29,7 +29,7 @@ public void play(){
     Player current;
     int[] last_move;
 
-    while (isEnd()){
+    while (!isEnd()){
         current = players[ tour % players.length];
         last_move = current.getMoveFromPlayer(this);
         for(Player p : players){
