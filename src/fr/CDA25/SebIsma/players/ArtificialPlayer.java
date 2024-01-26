@@ -1,12 +1,21 @@
 package fr.CDA25.SebIsma.players;
-
 import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.puissance4.Puissance4;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class ArtificialPlayer extends Player {
     @Override
     public int[] getMoveFromPlayer(Board board) {
-        return new int[]{0, 0};
+        int[] chosenNum = new int[2] ;
+        chosenNum[0] = (int) (Math.random()*(board.getSizeX()+1));
+        chosenNum[1] = (int) (Math.random()*(board.getSizeY()+1));
+        return chosenNum;
+    }
+
+    public int[] getMoveFromPlayer(Puissance4 board) {
+        int[] chosenNum = new int[1];
+        chosenNum[0] = (int) (Math.random()*board.getSizeX());
+        return chosenNum;
     }
 
     @Override
@@ -19,7 +28,9 @@ public class ArtificialPlayer extends Player {
 
     }
 
-    public ArtificialPlayer(char representation) {
-        super(representation);
+    public ArtificialPlayer() {
+    // doit choisir un charactère entre 33 et 127
+        super((char)((Math.random()*127)+33));
+
     }
 }
