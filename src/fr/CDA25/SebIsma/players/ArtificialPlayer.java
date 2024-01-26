@@ -4,6 +4,12 @@ import fr.CDA25.SebIsma.games.puissance4.Puissance4;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class ArtificialPlayer extends Player {
+
+    public ArtificialPlayer() {
+        // doit choisir un charactère entre 33 et 127
+        super((char)((Math.random()*127)+33));
+
+    }
     @Override
     public int[] getMoveFromPlayer(Board board) {
         int[] chosenNum = new int[2] ;
@@ -18,19 +24,13 @@ public class ArtificialPlayer extends Player {
         return chosenNum;
     }
 
+
     @Override
-    public void informOtherPlayerTurn(Player player, int[] move) {
+    public void informPlayerTurn(Board board, Player player, int[] move) {
 
     }
 
     @Override
     public void gameEnd(Player winner) {
-
-    }
-
-    public ArtificialPlayer() {
-    // doit choisir un charactère entre 33 et 127
-        super((char)((Math.random()*127)+33));
-
     }
 }

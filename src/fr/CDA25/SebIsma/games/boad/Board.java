@@ -34,7 +34,7 @@ public void play(){
         last_move = current.getMoveFromPlayer(this);
         for(Player p : players){
             if(p != current)
-                p.informOtherPlayerTurn(current, last_move);
+                p.informPlayerTurn(this, current, last_move);
         }
     }
 }

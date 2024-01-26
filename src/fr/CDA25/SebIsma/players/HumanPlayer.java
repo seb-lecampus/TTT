@@ -17,7 +17,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void informOtherPlayerTurn(Player player, int[] move) {
+    public void informPlayerTurn(Board board, Player player, int[] move) {
 
     }
 
