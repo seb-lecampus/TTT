@@ -7,7 +7,7 @@ public class Cell {
 
     public String getRepresentation(){
         if(this.owner == null){
-            return "|   ";
+            return "\u001B[32m" +"|   ";
         }else{
             return "| "+this.owner.getRepresentation()+" ";
         }
