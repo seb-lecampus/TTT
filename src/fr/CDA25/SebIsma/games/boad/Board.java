@@ -3,18 +3,26 @@ package fr.CDA25.SebIsma.games.boad;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public abstract class Board {
- private Cell[][] board;
+private Cell[][] board;
 
- private Player[] players;
+private Player[] players;
 
- private int sizeX, sizeY;
+private int sizeX, sizeY;
 
- public Board(Player[] players, int sizeX, int sizeY){
-     this.players = players;
-     this.sizeX = sizeX;
-     this.sizeY = sizeY;
-     // todo Cell[][]
- }
+public int getSizeX() {
+    return sizeX;
+}
+
+public int getSizeY() {
+    return sizeY;
+}
+
+public Board(Player[] players, int sizeX, int sizeY){
+    this.players = players;
+    this.sizeX = sizeX;
+    this.sizeY = sizeY;
+    // todo Cell[][]
+}
 
 public void play(){
     int tour = 0;
