@@ -17,13 +17,16 @@ public class Terminal implements View{
     public Player getPlayer() {
 
         System.out.println("créer un joueur artificiel ? (y/n) ");
-        char choice = this.interaction.askChar();
-        System.out.println("Choisir un symbol (un caractere unique)");
+        char choice = Character.toLowerCase(this.interaction.askChar());
 
-        char symbol = this.interaction.askChar();
         if(choice == 'y'){
-            return new ArtificialPlayer(symbol);
+
+            ArtificialPlayer ai = new ArtificialPlayer();
+            System.out.println("l'IA a choisi le symbole "+ ai.getRepresentation() );
+            return ai;
         }else{
+            System.out.println("Choisir un symbol (un caractere unique)");
+            char symbol = this.interaction.askChar();
             return new HumanPlayer(symbol, this);
         }
 
