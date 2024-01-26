@@ -20,11 +20,11 @@ public class Terminal implements View{
         System.out.println("3. Puissance 4");
         switch(interaction.askInt()){
             case 1:
-                return new TicTacToe(players, 3, 3);
+                return new TicTacToe(players);
             case 2:
-                return new Gomoku(players, 15, 15);
+                return new Gomoku(players);
             case 3:
-                return new Puissance4(players, 7, 6);
+                return new Puissance4(players);
         }
         return null;
     }
