@@ -10,6 +10,6 @@ public class Puissance4 extends Board {
 
     @Override
     protected boolean isEnd() {
-        return false;
+        return true;
     }
 }
