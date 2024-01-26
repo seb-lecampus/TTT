@@ -4,12 +4,12 @@ import fr.CDA25.SebIsma.games.boad.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class Gomoku extends Board {
-    public Gomoku(Player[] players, int sizeX, int sizeY) {
-        super(players, sizeX, sizeY);
+    public Gomoku(Player[] players) {
+        super(players, 15, 15);
     }
 
     @Override
-    protected boolean isEnd() {
+    protected boolean isEnd(int[] last_move) {
         return true;
     }
 }

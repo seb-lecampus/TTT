@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         View ui;
-        ArrayList<Player> players = new ArrayList<Player>(2);
+        ArrayList<Player> players = new ArrayList<Player>(2); // todo remove Magic number
 
         if(args.length != 0 && args[0].equals("UI"))
             ui = new Terminal();

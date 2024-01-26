@@ -4,12 +4,12 @@ import fr.CDA25.SebIsma.games.boad.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class Puissance4 extends Board {
-    public Puissance4(Player[] players, int sizeX, int sizeY) {
-        super(players, sizeX, sizeY);
+    public Puissance4(Player[] players) {
+        super(players, 7, 6);
     }
 
     @Override
-    protected boolean isEnd() {
+    protected boolean isEnd(int[] last_move) {
         return true;
     }
 }
