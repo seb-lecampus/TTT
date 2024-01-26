@@ -9,7 +9,15 @@ public abstract class Board {
 
  private int sizeX, sizeY;
 
-public void play(){
+    public int getSizeX() {
+        return sizeX;
+    }
+
+    public int getSizeY() {
+        return sizeY;
+    }
+
+    public void play(){
     int tour = 0;
     Player current;
     int[] last_move;
