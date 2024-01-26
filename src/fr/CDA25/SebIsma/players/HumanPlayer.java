@@ -9,6 +9,7 @@ public class HumanPlayer extends Player {
     private View view;
     public HumanPlayer(char representation, View view) {
         super(representation);
+        this.view = view;
     }
 
     @Override
@@ -18,7 +19,7 @@ public class HumanPlayer extends Player {
 
     @Override
     public void informPlayerTurn(Board board, Player player, int[] move) {
-
+        this.view.displayBoard(board);
     }
 
     @Override

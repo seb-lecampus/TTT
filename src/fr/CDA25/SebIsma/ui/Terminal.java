@@ -49,23 +49,31 @@ public class Terminal implements View{
 
     }
 
-    public void displayBoard(Board board){
-
-        for (Cell[] cellRow : board.getBoard()){
-            this.lignBord(board);
-            for(Cell cell : cellRow){
-                System.out.println(cell.getRepresentation());
+    public void displayBoard(Board board, int[] lastMove){
+            String color = "";
+        for (int i = 0; i < board.getSizeX() ; i++) {
+            this.lignBord(board.getSizeX());
+            for (int j = 0; j < board.getSizeY() ; j++) {
+                if(lastMove[1] == i && lastMove[0] == j){
+                    color = "\\u001B[31m";
+                }else{
+                    System.out.println(color + board.getBoard()[i][j].getRepresentation());
+                }
             }
-            this.lignBord(board);
         }
+        
     }
 
-    private void lignBord(Board board){
-        for (int i = 0; i < board.getSizeX(); i++) {
+    private void lignBord(int boardSize){
+        for (int i = 0; i < boardSize; i++) {
             System.out.print("-----");
         }
     }
 
+    @Override
+    public void displayMessage(String message) {
+
+    }
 }
 
 
