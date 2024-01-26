@@ -24,5 +24,13 @@ public class HumanPlayer extends Player {
     @Override
     public void gameEnd(Player winner) {
 
+        if (winner == null) {
+            System.out.println("Egalité ...");
+        } else if(winner == this) {
+            System.out.println("tu à gagné");
+        } else {
+            System.out.println("t'es nul");
+        }
+    }
     }
 }
