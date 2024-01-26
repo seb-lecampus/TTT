@@ -19,7 +19,20 @@ public class HumanPlayer extends Player {
 
     @Override
     public void informPlayerTurn(Board board, Player player, int[] move) {
+        this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
+        this.showLastMove(move);
         this.view.displayBoard(board);
+    }
+    private void showLastMove(int[] move) {
+        String axis="" ;
+        for (int i = 0; i < move.length ; i++) {
+            if(i == 0) {
+                axis = "ligne";
+            }if(i == 1) {
+                axis = "colonne";
+            }
+            this.view.displayMessage(axis+" "+ move[i]);
+        }
     }
 
     @Override

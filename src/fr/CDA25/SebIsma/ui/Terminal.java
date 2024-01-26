@@ -61,7 +61,6 @@ public class Terminal implements View{
                 }
             }
         }
-        
     }
 
     private void lignBord(int boardSize){
@@ -72,7 +71,7 @@ public class Terminal implements View{
 
     @Override
     public void displayMessage(String message) {
-
+        System.out.print(message);
     }
 }
 
