@@ -5,8 +5,8 @@ import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class ArtificialPlayer extends Player {
     @Override
-    public void getMoveFromPlayer(Board board) {
-
+    public int[] getMoveFromPlayer(Board board) {
+        return new int[]{0, 0};
     }
 
     @Override

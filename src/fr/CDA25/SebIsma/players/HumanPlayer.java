@@ -12,8 +12,8 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void getMoveFromPlayer(Board board) {
-
+    public int[] getMoveFromPlayer(Board board) {
+        return new int[]{0, 0};
     }
 
     @Override

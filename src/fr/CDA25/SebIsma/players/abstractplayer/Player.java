@@ -13,7 +13,7 @@ public abstract class Player {
          return representation;
      }
 
-     public abstract void getMoveFromPlayer(Board board);
+     public abstract int[] getMoveFromPlayer(Board board);
     public abstract void informOtherPlayerTurn(Player player, int[] move);
 
     public abstract void gameEnd(Player winner);

@@ -12,13 +12,14 @@ public abstract class Board {
 public void play(){
     int tour = 0;
     Player current;
+    int[] last_move;
 
     while (isEnd()){
-        current = players[ tour / players.length];
-        current.getMoveFromPlayer(this);
+        current = players[ tour % players.length];
+        last_move = current.getMoveFromPlayer(this);
         for(Player p : players){
             if(p != current)
-                p.inform()
+                p.informOtherPlayerTurn(current, last_move);
         }
     }
 }

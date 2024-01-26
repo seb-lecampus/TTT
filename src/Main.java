@@ -4,6 +4,7 @@ import fr.CDA25.SebIsma.ui.Terminal;
 import fr.CDA25.SebIsma.ui.View;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +22,9 @@ public class Main {
                 players.add(p);
         }
 
-        Board game = ui.getGame(Array.from(players));
+
+
+        Board game = ui.getGame( (Player[]) players.toArray(new Player[players.size()] ));
             game.play();
     }
 }
