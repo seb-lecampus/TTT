@@ -10,7 +10,11 @@ public class Puissance4 extends Board {
 
     @Override
     protected int[] processMove(int[] last_move) {
-        return last_move; // TODO
+
+        while(last_move[1]+1 < this.getSizeY() && this.board[last_move[1]+1][last_move[0]].getOwner() == null ) {
+            last_move[1]+=1;
+        }
+        return last_move;
     }
 
     @Override
@@ -26,4 +30,38 @@ public class Puissance4 extends Board {
         } else
             return checkFull();
     }
+
+    @Override
+    public void play() {
+        int tour = 0;
+        Player current ;
+        int[] last_move = {0, 0};
+
+        do {
+            current = players[ tour % players.length];
+
+            do {
+                last_move = current.getMoveFromPlayer((Puissance4)this);
+            } while(!isValidMove(last_move));
+
+            last_move = processMove(last_move);
+            board[last_move[1]][last_move[0]].setOwner(current);
+
+            for(Player p : players){
+                if(p != current)
+                    p.informPlayerTurn(this, current, last_move);
+            }
+
+            ++tour;
+        } while(!isEnd(last_move));
+
+        for(Player p : players)
+            p.gameEnd(winner);
+    }
+
+
+//    @Override
+//    protected boolean isValidMove(int[] move){
+//        return isOnBoard(move) && board[0][move[0]].getOwner() == null;
+//    }
 }

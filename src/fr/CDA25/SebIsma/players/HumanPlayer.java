@@ -20,10 +20,13 @@ public class HumanPlayer extends Player {
         int[] chosenCoord = new int[2];
         this.view.displayMessage("choisi la ligne");
         chosenCoord[0] = this.getCoordinate();
-        this.view.displayMessage("choisi la colonne");
-        chosenCoord[1] = this.getCoordinate();
+        if(!(board instanceof Puissance4)) {
+            this.view.displayMessage("choisi la colonne");
+            chosenCoord[1] = this.getCoordinate();
+        }
         return chosenCoord;
     }
+
     public int[] getMoveFromPlayer(Puissance4 board) {
         int[] chosenCoord = new int[2];
         this.view.displayMessage("choisi la colonne");

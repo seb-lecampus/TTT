@@ -26,13 +26,13 @@ public Board(Player[] players, int sizeX, int sizeY){
     this.players = players;
     this.sizeX = sizeX;
     this.sizeY = sizeY;
-    board = new Cell[this.sizeX][this.sizeY];
+    board = new Cell[this.sizeY][this.sizeX];
     this.buildBoard(this.board);
 }
 
 private void buildBoard(Cell[][] board){
-    for (int i = 0; i < this.getSizeX() ; i++) {
-        for (int j = 0; j < getSizeY(); j++) {
+    for (int i = 0; i < this.getSizeY() ; i++) {
+        for (int j = 0; j < getSizeX(); j++) {
            board[i][j] = new Cell();
         }
     }

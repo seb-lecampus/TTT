@@ -60,11 +60,11 @@ public class Terminal implements View{
 
     public void displayBoard(Board board, int[] lastMove){
 
-        for (int i = 0; i < board.getSizeX() ; i++) {
+        for (int i = 0; i < board.getSizeY() ; i++) {
 
-            this.lignBord(board.getSizeX());
+            this.lignBord(board.getSizeY());
             System.out.println();
-            for (int j = 0; j < board.getSizeY() ; j++) {
+            for (int j = 0; j < board.getSizeX() ; j++) {
                 String color = "";
                 if(lastMove[1] == i && lastMove[0] == j){
 
@@ -75,7 +75,7 @@ public class Terminal implements View{
             }
             System.out.println("|");
         }
-        this.lignBord(board.getSizeX());
+        this.lignBord(board.getSizeY());
         System.out.println();
     }
 

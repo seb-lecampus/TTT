@@ -1,6 +1,7 @@
 package fr.CDA25.SebIsma.games.tictactoe;
 
 import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.puissance4.Puissance4;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class TicTacToe extends Board {
@@ -8,6 +9,7 @@ public class TicTacToe extends Board {
         super(players, 3, 3);
     }
 
+ 
     @Override
     protected boolean isEnd(int[] last_move) {
         boolean a = checkDir(last_move, new int[]{1, 1}, 3);
