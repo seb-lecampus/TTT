@@ -50,8 +50,8 @@ public void play(){
             last_move = getMoveFromPlayer(this, current);
         } while(!isValidMove(last_move));
 
-        last_move = processMove(last_move);
-        board[last_move[1]][last_move[0]].setOwner(current);
+        //last_move = processMove(last_move);
+        occupy(last_move, current);
 
         for(Player p : players){
             if(p != current)
@@ -65,16 +65,20 @@ public void play(){
         p.gameEnd(winner);
 }
 
-protected int[] getMoveFromPlayer(Board board, Player player){
+    protected void occupy(int[] last_move, Player current) {
+        board[last_move[1]][last_move[0]].setOwner(current);
+    }
+
+    protected int[] getMoveFromPlayer(Board board, Player player){
     return player.getMoveFromPlayer2D(board);
 }
 
 
 protected abstract boolean isEnd(int[] last_move);
 
-protected int[] processMove(int[] last_move){
-    return last_move;
-}
+//protected int[] processMove(int[] last_move){
+//    return last_move;
+//}
 protected boolean checkDir(int[] move, int[] dir, int consecutive) {
     int[] cpy = {move[0], move[1]}; // copy of move
     int[] next = {move[0]+dir[0], move[1]+dir[1]}; // next cell in the dir

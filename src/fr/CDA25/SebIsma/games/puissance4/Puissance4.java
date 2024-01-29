@@ -8,13 +8,21 @@ public class Puissance4 extends Board {
         super(players, 7, 6);
     }
 
-    @Override
-    protected int[] processMove(int[] last_move) {
+//    @Override
+//    protected int[] processMove(int[] last_move) {
+//
+//        while(last_move[1]+1 < this.getSizeY() && this.board[last_move[1]+1][last_move[0]].getOwner() == null ) {
+//            last_move[1]+=1;
+//        }
+//        return last_move;
+//    }
 
+    @Override
+    protected void occupy(int[] last_move, Player current) {
         while(last_move[1]+1 < this.getSizeY() && this.board[last_move[1]+1][last_move[0]].getOwner() == null ) {
             last_move[1]+=1;
         }
-        return last_move;
+        super.occupy(last_move, current);
     }
 
     @Override

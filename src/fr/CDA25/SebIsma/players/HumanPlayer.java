@@ -65,7 +65,7 @@ public class HumanPlayer extends Player {
         if (winner == null) {
             this.view.displayMessage("Egalité ...");
         } else if(winner == this) {
-            this.view.displayMessage("tu à gagné");
+            this.view.displayMessage("tu as gagné");
         } else {
             this.view.displayMessage("t'es nul");
         }
