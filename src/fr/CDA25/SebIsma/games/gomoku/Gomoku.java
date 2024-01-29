@@ -10,6 +10,15 @@ public class Gomoku extends Board {
 
     @Override
     protected boolean isEnd(int[] last_move) {
-        return true;
+        boolean a = checkDir(last_move, new int[]{1, 1}, 5);
+        boolean b = checkDir(last_move, new int[]{1, 0}, 5);
+        boolean c = checkDir(last_move, new int[]{0, 1}, 5);
+        boolean d = checkDir(last_move, new int[]{1, -1}, 5);
+
+        if(a || b || c || d) {
+            winner = board[last_move[1]][last_move[0]].getOwner();
+            return true;
+        } else
+            return checkFull();
     }
 }
