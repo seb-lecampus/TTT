@@ -9,7 +9,7 @@ import fr.CDA25.SebIsma.ui.View;
 public class HumanPlayer extends Player {
 
     private View view;
-    private final InteractionUtilisateur interaction = new InteractionUtilisateur();
+  
     public HumanPlayer(char representation, View view) {
         super(representation);
         this.view = view;
@@ -17,29 +17,16 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] getMoveFromPlayer2D(Board board) {
-        int[] chosenCoord = new int[2];
-        this.view.displayMessage("choisi la ligne");
-        chosenCoord[0] = this.getCoordinate();
-        this.view.displayMessage("choisi la colonne");
-        chosenCoord[1] = this.getCoordinate();
 
-        return chosenCoord;
+        return this.view.getMove2D(board);
     }
 
     public int getMoveFromPlayer1D(Board board) {
-        this.view.displayMessage("choisi la colonne");
-        return this.getCoordinate();
+
+        return this.view.getMove1D(board);
     }
 
-    private int getCoordinate(){
-        do {
-            try {
-                return this.interaction.askInt();
-            } catch (Exception e) {
-                this.view.displayMessage("\u001B[31m"+"entrez un chiffre"+"\u001B[0m");
-            }
-        }while(true);
-    }
+
 
     @Override
     public void informPlayerTurn(Board board, Player player, int[] move) {

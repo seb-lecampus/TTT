@@ -23,7 +23,6 @@ public class Main {
         }
 
 
-
         Board game = ui.getGame( (Player[]) players.toArray(new Player[players.size()] ));
             game.play();
     }

@@ -10,5 +10,9 @@ public interface View {
 
     Player getPlayer();
 
+
+    int[] getMove2D(Board board);
+
+    int getMove1D(Board board);
     void displayMessage(String message);
 }

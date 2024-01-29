@@ -89,6 +89,31 @@ public class Terminal implements View{
     public void displayMessage(String message) {
         System.out.println(message);
     }
+    private int getInt(){
+
+        do {
+            try {
+                return this.interaction.askInt();
+            } catch (Exception e) {
+                this.displayMessage("\u001B[31m"+"entrez un chiffre"+"\u001B[0m");
+            }
+        }while(true);
+    }
+
+    public int[] getMove2D(Board board) {
+        int[] chosenCoord = new int[2];
+        this.displayMessage("choisi la ligne");
+        chosenCoord[0] = this.getInt();
+        this.displayMessage("choisi la colonne");
+        chosenCoord[1] = this.getInt();
+
+        return chosenCoord;
+    }
+
+    public int getMove1D(Board board) {
+        this.displayMessage("choisi la colonne");
+        return this.getInt();
+    }
 }
 
 
