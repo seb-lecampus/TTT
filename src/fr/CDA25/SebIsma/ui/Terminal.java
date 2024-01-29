@@ -22,15 +22,21 @@ public class Terminal implements View{
         System.out.println("1. TicTacToe");
         System.out.println("2. Gomoku");
         System.out.println("3. Puissance 4");
-        switch(interaction.askInt()){
-            case 1:
-                return new TicTacToe(players);
-            case 2:
-                return new Gomoku(players);
-            case 3:
-                return new Puissance4(players);
-        }
-        return null;
+        do {
+            try {
+                switch (interaction.askInt()) {
+                    case 1:
+                        return new TicTacToe(players);
+                    case 2:
+                        return new Gomoku(players);
+                    case 3:
+                        return new Puissance4(players);
+                }
+            } catch (Exception e) {
+                System.out.println("\u001B[31m"+"Il faut entrer un chiffre"+"\u001B[0m");
+            }
+        }while(true);
+
     }
 
     @Override
@@ -61,9 +67,11 @@ public class Terminal implements View{
             for (int j = 0; j < board.getSizeY() ; j++) {
                 String color = "";
                 if(lastMove[1] == i && lastMove[0] == j){
-                    color = "\u001B[31m";
+
+                    System.out.print("| " +"\u001B[31m" + board.getBoard()[i][j].getOwner().getRepresentation()+ " \u001B[0m");
+                }else {
+                    System.out.print(board.getBoard()[i][j].getRepresentation());
                 }
-                System.out.print(color + board.getBoard()[i][j].getRepresentation()+ "\u001B[0m");
             }
             System.out.println("|");
         }

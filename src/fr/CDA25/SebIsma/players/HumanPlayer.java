@@ -19,16 +19,26 @@ public class HumanPlayer extends Player {
     public int[] getMoveFromPlayer(Board board) {
         int[] chosenCoord = new int[2];
         this.view.displayMessage("choisi la ligne");
-        chosenCoord[0] = this.interaction.askInt();
+        chosenCoord[0] = this.getCoordinate();
         this.view.displayMessage("choisi la colonne");
-        chosenCoord[1] = this.interaction.askInt();
+        chosenCoord[1] = this.getCoordinate();
         return chosenCoord;
     }
     public int[] getMoveFromPlayer(Puissance4 board) {
         int[] chosenCoord = new int[2];
         this.view.displayMessage("choisi la colonne");
-        chosenCoord[0] = this.interaction.askInt();
+        chosenCoord[0] = this.getCoordinate();
         return chosenCoord;
+    }
+
+    private int getCoordinate(){
+        do {
+            try {
+                return this.interaction.askInt();
+            } catch (Exception e) {
+                this.view.displayMessage("\u001B[31m"+"entrez un chiffre"+"\u001B[0m");
+            }
+        }while(true);
     }
 
     @Override
@@ -53,11 +63,11 @@ public class HumanPlayer extends Player {
     public void gameEnd(Player winner) {
 
         if (winner == null) {
-            System.out.println("Egalité ...");
+            this.view.displayMessage("Egalité ...");
         } else if(winner == this) {
-            System.out.println("tu à gagné");
+            this.view.displayMessage("tu à gagné");
         } else {
-            System.out.println("t'es nul");
+            this.view.displayMessage("t'es nul");
         }
     }
 
