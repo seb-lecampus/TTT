@@ -10,27 +10,30 @@ public class ArtificialPlayer extends Player {
         super((char)((Math.random()*127)+33));
 
     }
+
     @Override
-    public int[] getMoveFromPlayer(Board board) {
+    public int[] getMoveFromPlayer2D(Board board) {
         int[] chosenNum = new int[2] ;
         chosenNum[0] = (int) (Math.random()*(board.getSizeX()+1));
         chosenNum[1] = (int) (Math.random()*(board.getSizeY()+1));
         return chosenNum;
     }
 
-    public int[] getMoveFromPlayer(Puissance4 board) {
-        int[] chosenNum = new int[1];
-        chosenNum[0] = (int) (Math.random()*board.getSizeX());
-        return chosenNum;
+
+    @Override
+    public int getMoveFromPlayer1D(Board board) {
+
+        return  (int) (Math.random()*(board.getSizeX()+1));
+
     }
 
 
-    @Override
+
     public void informPlayerTurn(Board board, Player player, int[] move) {
 
     }
 
-    @Override
+
     public void gameEnd(Player winner) {
     }
 }

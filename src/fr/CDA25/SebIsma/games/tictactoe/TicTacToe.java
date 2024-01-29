@@ -9,7 +9,7 @@ public class TicTacToe extends Board {
         super(players, 3, 3);
     }
 
- 
+
     @Override
     protected boolean isEnd(int[] last_move) {
         boolean a = checkDir(last_move, new int[]{1, 1}, 3);

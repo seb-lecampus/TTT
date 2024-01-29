@@ -47,7 +47,7 @@ public void play(){
         current = players[ tour % players.length];
 
         do {
-            last_move = current.getMoveFromPlayer(this);
+            last_move = getMoveFromPlayer(this, current);
         } while(!isValidMove(last_move));
 
         last_move = processMove(last_move);
@@ -63,6 +63,10 @@ public void play(){
 
     for(Player p : players)
         p.gameEnd(winner);
+}
+
+protected int[] getMoveFromPlayer(Board board, Player player){
+    return player.getMoveFromPlayer2D(board);
 }
 
 

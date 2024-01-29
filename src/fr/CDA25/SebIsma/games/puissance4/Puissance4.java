@@ -32,36 +32,11 @@ public class Puissance4 extends Board {
     }
 
     @Override
-    public void play() {
-        int tour = 0;
-        Player current ;
-        int[] last_move = {0, 0};
-
-        do {
-            current = players[ tour % players.length];
-
-            do {
-                last_move = current.getMoveFromPlayer((Puissance4)this);
-            } while(!isValidMove(last_move));
-
-            last_move = processMove(last_move);
-            board[last_move[1]][last_move[0]].setOwner(current);
-
-            for(Player p : players){
-                if(p != current)
-                    p.informPlayerTurn(this, current, last_move);
-            }
-
-            ++tour;
-        } while(!isEnd(last_move));
-
-        for(Player p : players)
-            p.gameEnd(winner);
+    protected int[] getMoveFromPlayer(Board board, Player player) {
+        int[] tab = new int[2];
+        tab[0] = player.getMoveFromPlayer1D(board);
+        return tab;
     }
 
 
-//    @Override
-//    protected boolean isValidMove(int[] move){
-//        return isOnBoard(move) && board[0][move[0]].getOwner() == null;
-//    }
 }

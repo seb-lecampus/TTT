@@ -16,22 +16,19 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public int[] getMoveFromPlayer(Board board) {
+    public int[] getMoveFromPlayer2D(Board board) {
         int[] chosenCoord = new int[2];
         this.view.displayMessage("choisi la ligne");
         chosenCoord[0] = this.getCoordinate();
-        if(!(board instanceof Puissance4)) {
-            this.view.displayMessage("choisi la colonne");
-            chosenCoord[1] = this.getCoordinate();
-        }
+        this.view.displayMessage("choisi la colonne");
+        chosenCoord[1] = this.getCoordinate();
+
         return chosenCoord;
     }
 
-    public int[] getMoveFromPlayer(Puissance4 board) {
-        int[] chosenCoord = new int[2];
+    public int getMoveFromPlayer1D(Board board) {
         this.view.displayMessage("choisi la colonne");
-        chosenCoord[0] = this.getCoordinate();
-        return chosenCoord;
+        return this.getCoordinate();
     }
 
     private int getCoordinate(){
