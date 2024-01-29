@@ -6,7 +6,7 @@ public abstract class Board {
 protected Cell[][] board;
 
 protected Player[] players;
-protected Player winner;
+protected Player winner = null;
 
 private int sizeX, sizeY;
 
@@ -40,7 +40,7 @@ private void buildBoard(Cell[][] board){
 
 public void play(){
     int tour = 0;
-    Player current, winner=null;
+    Player current ;
     int[] last_move = {0, 0};
 
     do {
