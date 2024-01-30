@@ -22,8 +22,14 @@ public class Main {
                 players.add(p);
         }
 
-
+        do{
         Board game = ui.getGame( (Player[]) players.toArray(new Player[players.size()] ));
+        if(game != null) {
             game.play();
+
+        }else{
+            break;
+        }
+        }while(true);
     }
 }

@@ -22,21 +22,24 @@ public class Terminal implements View{
         System.out.println("1. TicTacToe");
         System.out.println("2. Gomoku");
         System.out.println("3. Puissance 4");
-        do {
-            try {
-                switch (interaction.askInt()) {
-                    case 1:
-                        return new TicTacToe(players);
-                    case 2:
-                        return new Gomoku(players);
-                    case 3:
-                        return new Puissance4(players);
-                }
-            } catch (Exception e) {
-                System.out.println("\u001B[31m"+"Il faut entrer un chiffre"+"\u001B[0m");
-            }
-        }while(true);
+        System.out.println("0. Quitter");
 
+        try {
+            switch (interaction.askInt()) {
+                case 1:
+                    return new TicTacToe(players);
+                case 2:
+                    return new Gomoku(players);
+                case 3:
+                    return new Puissance4(players);
+                case 0:
+                    return null;
+
+            }
+        } catch (Exception e) {
+            System.out.println("\u001B[31m" + "Il faut entrer un chiffre" + "\u001B[0m");
+        }
+        return getGame(players);
     }
 
     @Override
