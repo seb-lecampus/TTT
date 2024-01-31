@@ -2,42 +2,41 @@ package fr.CDA25.SebIsma.games.board;
 
 public class Board {
 
-private final Cell[][] board;
+    private final Cell[][] board;
 
-private final int sizeX, sizeY;
+    private final int sizeX, sizeY;
 
-public int getSizeX() {
-    return sizeX;
-}
+    public int getSizeX() {
+        return sizeX;
+    }
 
-public int getSizeY() {
-    return sizeY;
-}
+    public int getSizeY() {
+        return sizeY;
+    }
 
+    public Cell[][] getBoard() {
+        return board;
+    }
 
-public Cell[][] getBoard() {
-    return board;
-}
+    public Board(int sizeX, int sizeY){
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        board = new Cell[this.sizeY][this.sizeX];
+        this.buildBoard(this.board);
+    }
 
-public Board(int sizeX, int sizeY){
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
-    board = new Cell[this.sizeY][this.sizeX];
-    this.buildBoard(this.board);
-}
+        /**
+         * build the board's cell
+         * @param board the board on which construct the cells
+         */
+        private void buildBoard(Cell[][] board){
 
-    /**
-     * build the board's cell
-     * @param board the board on which construct the cells
-     */
-    private void buildBoard(Cell[][] board){
-
-    for (int i = 0; i < this.getSizeY() ; i++) {
-        for (int j = 0; j < getSizeX(); j++) {
-           board[i][j] = new Cell();
+        for (int i = 0; i < this.getSizeY() ; i++) {
+            for (int j = 0; j < getSizeX(); j++) {
+               board[i][j] = new Cell();
+            }
         }
     }
-}
 
     /**
      * check if the move is not out of the board

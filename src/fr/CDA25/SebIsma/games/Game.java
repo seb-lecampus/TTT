@@ -56,6 +56,10 @@ public abstract class Game {
         board.getBoard()[last_move[1]][last_move[0]].setOwner(current);
     }
     protected abstract boolean isEnd(int[] last_move);
+
+    /**
+     * Start the game
+     */
     public void play(){
 
         int tour = 0;

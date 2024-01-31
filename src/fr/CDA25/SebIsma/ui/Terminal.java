@@ -110,14 +110,10 @@ public class Terminal implements View{
     }
 
 
-    public int[] getMove2D(Board board) {
-        int[] chosenCoord = new int[2];
-        this.displayMessage("choisi la ligne");
-        chosenCoord[0] = this.askInt();
-        this.displayMessage("choisi la colonne");
-        chosenCoord[1] = this.askInt();
+    public int getMove(Board board) {
 
-        return chosenCoord;
+        return  this.askInt();
+
     }
 
     public int getMove1D(Board board) {
