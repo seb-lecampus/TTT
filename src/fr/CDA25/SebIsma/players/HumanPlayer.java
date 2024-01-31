@@ -1,16 +1,22 @@
 package fr.CDA25.SebIsma.players;
 
+import fr.CDA25.SebIsma.games.Game;
 import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.View;
 
 public class HumanPlayer extends Player {
 
-    private View view;
-  
-    public HumanPlayer(char representation, View view) {
+    //private View view;
+
+    /**
+     * Ctor
+     * @param representation Player representation in the {@link Game}
+     //* @param view {@link View} to use
+     */
+    public HumanPlayer(char representation/*, View view*/) {
         super(representation);
-        this.view = view;
+        //this.view = view;
     }
 
     @Override
@@ -23,6 +29,7 @@ public class HumanPlayer extends Player {
         return coordinates;
     }
 
+    @Over
     public int getMoveFromPlayer1D(Board board, View view) {
 
         view.displayMessage("choisi la colonne");
@@ -31,7 +38,7 @@ public class HumanPlayer extends Player {
     }
 
 
-    @Override
+    /*@Override
     public void informPlayerTurn(Board board, Player player, int[] move) {
         this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
         this.showLastMove(move);
@@ -59,7 +66,7 @@ public class HumanPlayer extends Player {
         } else {
             this.view.displayMessage("t'es nul");
         }
-    }
+    }*/
 
 }
 

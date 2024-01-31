@@ -3,6 +3,7 @@ import fr.CDA25.SebIsma.games.Game;
 
 
 public class Main {
+    // todo voir si on met GameInit en singleton et en faire une factory 
     public static void main(String[] args) {
         do {
             Game game = new GameInit(args).getGame();

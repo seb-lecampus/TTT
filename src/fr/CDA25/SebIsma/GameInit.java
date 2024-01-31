@@ -8,7 +8,7 @@ import fr.CDA25.SebIsma.ui.Terminal;
 import fr.CDA25.SebIsma.ui.View;
 
 /**
- * Act as factory for creating games
+ * Act as factory for creating {@link Game}
  */
 public class GameInit {
 

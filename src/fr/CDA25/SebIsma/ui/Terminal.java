@@ -50,7 +50,7 @@ public class Terminal implements View{
         } else if (choice == 'n') {
             System.out.println("Choisir un symbol (un caractere unique)");
             char symbol = this.askChar();
-            return new HumanPlayer(symbol, this);
+            return new HumanPlayer(symbol/*, this*/);
         } else{
             return getPlayer();
         }

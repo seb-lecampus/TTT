@@ -85,8 +85,10 @@ public abstract class Game {
 
         } while(!isEnd(last_move));
 
-        this.gameEnd(winner, current);
+        this.gameEndMessage(winner, current);
     }
+
+
     protected boolean checkDir(int[] move, int[] dir, int consecutive) {
 
         int[] cpy = {move[0], move[1]}; // copy of move
@@ -127,6 +129,13 @@ public abstract class Game {
                     return false;
         return true;
     }
+
+    /**
+     * show the information at start of the player's turn
+     * @param board the game's board
+     * @param player the current player
+     * @param move the last move of previous player
+     */
     public void informPlayerTurn(Board board, Player player, int[] move) {
 
         this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
@@ -134,6 +143,11 @@ public abstract class Game {
         this.view.displayBoard(board, move);
 
     }
+
+    /**
+     * show messages with coordinates of last move
+     * @param move last given coordinates
+     */
     private void showLastMove(int[] move) {
         String axis="" ;
 
@@ -149,7 +163,13 @@ public abstract class Game {
             this.view.displayMessage(axis+" "+ move[i]);
         }
     }
-    private void gameEnd(Player winner, Player current) {
+
+    /**
+     * show message of game's end
+     * @param winner the player who win
+     * @param current the current player
+     */
+    private void gameEndMessage(Player winner, Player current) {
 
         if (winner == null) {
             this.view.displayMessage("Egalité ...");

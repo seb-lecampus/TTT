@@ -16,14 +16,14 @@ public abstract class Player {
     }
 
     /**
-     * 
+     *
      * @param board
      * @param view
      * @return
      */
     public abstract int[] getMoveFromPlayer2D(Board board, View view);
     public abstract int getMoveFromPlayer1D(Board board, View view);
-    public abstract void informPlayerTurn(Board board, Player player, int[] move);
+    //public abstract void informPlayerTurn(Board board, Player player, int[] move);
 
-    public abstract void gameEnd(Player winner);
+    //public abstract void gameEnd(Player winner);
  }

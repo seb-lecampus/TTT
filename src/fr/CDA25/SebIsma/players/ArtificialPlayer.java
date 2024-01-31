@@ -19,21 +19,8 @@ public class ArtificialPlayer extends Player {
         return chosenNum;
     }
 
-
     @Override
     public int getMoveFromPlayer1D(Board board, View view) {
-
         return  (int) (Math.random()*(board.getSizeX()+1));
-
-    }
-
-
-
-    public void informPlayerTurn(Board board, Player player, int[] move) {
-
-    }
-
-
-    public void gameEnd(Player winner) {
     }
 }

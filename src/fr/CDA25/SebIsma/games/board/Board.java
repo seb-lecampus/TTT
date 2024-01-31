@@ -1,5 +1,8 @@
 package fr.CDA25.SebIsma.games.board;
 
+/**
+ * Handle {@Link Cell}s
+ */
 public class Board {
 
     private final Cell[][] board;
@@ -18,6 +21,11 @@ public class Board {
         return board;
     }
 
+    /**
+     * Ctor
+     * @param sizeX number of {@link Cell} in width
+     * @param sizeY number of {@link Cell} in height
+     */
     public Board(int sizeX, int sizeY){
         this.sizeX = sizeX;
         this.sizeY = sizeY;
