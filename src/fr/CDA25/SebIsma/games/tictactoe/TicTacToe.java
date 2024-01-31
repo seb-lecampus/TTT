@@ -1,12 +1,11 @@
 package fr.CDA25.SebIsma.games.tictactoe;
+import fr.CDA25.SebIsma.games.Game;
+import fr.CDA25.SebIsma.ui.View;
 
-import fr.CDA25.SebIsma.games.boad.Board;
-import fr.CDA25.SebIsma.games.puissance4.Puissance4;
-import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
-public class TicTacToe extends Board {
-    public TicTacToe(Player[] players) {
-        super(players, 3, 3);
+public class TicTacToe extends Game {
+    public TicTacToe(View view) {
+        super(view, 3,3);
     }
 
 
@@ -18,7 +17,7 @@ public class TicTacToe extends Board {
         boolean d = checkDir(last_move, new int[]{1, -1}, 3);
 
         if(a || b || c || d) {
-            winner = board[last_move[1]][last_move[0]].getOwner();
+            winner = board.getBoard()[last_move[1]][last_move[0]].getOwner();
             return true;
         } else
             return checkFull();

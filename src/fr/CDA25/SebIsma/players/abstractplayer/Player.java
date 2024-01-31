@@ -1,6 +1,6 @@
 package fr.CDA25.SebIsma.players.abstractplayer;
 
-import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.board.Board;
 
 public abstract class Player {
      private char representation;

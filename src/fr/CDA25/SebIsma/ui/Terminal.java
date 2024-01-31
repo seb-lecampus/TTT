@@ -1,18 +1,20 @@
 package fr.CDA25.SebIsma.ui;
-import fr.CDA25.SebIsma.games.boad.Board;
-import fr.CDA25.SebIsma.games.boad.Cell;
-import fr.CDA25.SebIsma.games.gomoku.Gomoku;
-import fr.CDA25.SebIsma.games.puissance4.Puissance4;
-import fr.CDA25.SebIsma.games.tictactoe.TicTacToe;
+import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.ArtificialPlayer;
 import fr.CDA25.SebIsma.players.HumanPlayer;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
+
+import java.util.concurrent.ExecutionException;
 
 public class Terminal implements View{
 
     private final InteractionUtilisateur interaction = new InteractionUtilisateur();
 
-    public int getGame() {
+    public InteractionUtilisateur getInteraction() {
+        return interaction;
+    }
+
+    public int askGame() {
         // todo automatisation for new game
         System.out.println("Choisir un jeu");
         System.out.println("1. TicTacToe");
@@ -20,41 +22,59 @@ public class Terminal implements View{
         System.out.println("3. Puissance 4");
         System.out.println("0. Quitter");
 
-        try {
-            switch (interaction.askInt()) {
+
+            switch (this.askInt()) {
                 case 1:
                     return 1;
                 case 2:
                     return 2;
                 case 3:
                     return 3;
-                case 0:
-                    return 0;
-
+                default:
+                    return askGame();
             }
-        } catch (Exception e) {
-            System.out.println("\u001B[31m" + "Il faut entrer un chiffre" + "\u001B[0m");
-        }
-        return getGame();
+
     }
 
     @Override
     public Player getPlayer() {
 
         System.out.println("créer un joueur artificiel ? (y/n) ");
-        char choice = Character.toLowerCase(this.interaction.askChar());
+        char choice = Character.toLowerCase(this.askChar());
 
         if(choice == 'y'){
 
             ArtificialPlayer ai = new ArtificialPlayer();
             System.out.println("l'IA a choisi le symbole "+ ai.getRepresentation() );
             return ai;
-        }else{
+        } else if (choice == 'n') {
             System.out.println("Choisir un symbol (un caractere unique)");
-            char symbol = this.interaction.askChar();
+            char symbol = this.askChar();
             return new HumanPlayer(symbol, this);
+        } else{
+            return getPlayer();
         }
 
+    }
+    private char askChar(){
+        do {
+            try{
+                return this.interaction.getChar();
+            }catch(Exception e){
+                this.interaction.getScan().nextLine();
+                System.out.println("\u001B[31m" + "Il faut entrer un caractère" + "\u001B[0m");
+            }
+        }while(true);
+    }
+    private int askInt(){
+        do {
+            try{
+                return this.interaction.getInt();
+            }catch(Exception e){
+                this.interaction.getScan().nextLine();
+                System.out.println("\u001B[31m" + "Il faut entrer un chiffre" + "\u001B[0m");
+            }
+        }while(true);
     }
 
     public void displayBoard(Board board, int[] lastMove){
@@ -88,30 +108,21 @@ public class Terminal implements View{
     public void displayMessage(String message) {
         System.out.println(message);
     }
-    private int getInt(){
 
-        do {
-            try {
-                return this.interaction.askInt();
-            } catch (Exception e) {
-                this.displayMessage("\u001B[31m"+"entrez un chiffre"+"\u001B[0m");
-            }
-        }while(true);
-    }
 
     public int[] getMove2D(Board board) {
         int[] chosenCoord = new int[2];
         this.displayMessage("choisi la ligne");
-        chosenCoord[0] = this.getInt();
+        chosenCoord[0] = this.askInt();
         this.displayMessage("choisi la colonne");
-        chosenCoord[1] = this.getInt();
+        chosenCoord[1] = this.askInt();
 
         return chosenCoord;
     }
 
     public int getMove1D(Board board) {
         this.displayMessage("choisi la colonne");
-        return this.getInt();
+        return this.askInt();
     }
 }
 

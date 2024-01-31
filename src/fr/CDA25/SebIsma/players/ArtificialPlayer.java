@@ -1,6 +1,5 @@
 package fr.CDA25.SebIsma.players;
-import fr.CDA25.SebIsma.games.boad.Board;
-import fr.CDA25.SebIsma.games.puissance4.Puissance4;
+import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public class ArtificialPlayer extends Player {

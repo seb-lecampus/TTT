@@ -1,11 +1,13 @@
 package fr.CDA25.SebIsma.games.puissance4;
 
-import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.Game;
+import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
+import fr.CDA25.SebIsma.ui.View;
 
-public class Puissance4 extends Board {
-    public Puissance4(Player[] players) {
-        super(players, 7, 6);
+public class Puissance4 extends Game {
+    public Puissance4(View view) {
+        super(view, 7,6);
     }
 
 //    @Override
@@ -19,7 +21,7 @@ public class Puissance4 extends Board {
 
     @Override
     protected void occupy(int[] last_move, Player current) {
-        while(last_move[1]+1 < this.getSizeY() && this.board[last_move[1]+1][last_move[0]].getOwner() == null ) {
+        while(last_move[1]+1 < this.board.getSizeY() && this.board.getBoard()[last_move[1]+1][last_move[0]].getOwner() == null ) {
             last_move[1]+=1;
         }
         super.occupy(last_move, current);
@@ -33,7 +35,7 @@ public class Puissance4 extends Board {
         boolean d = checkDir(last_move, new int[]{1, -1}, 4);
 
         if(a || b || c || d) {
-            winner = board[last_move[1]][last_move[0]].getOwner();
+            winner = board.getBoard()[last_move[1]][last_move[0]].getOwner();
             return true;
         } else
             return checkFull();

@@ -1,11 +1,13 @@
 package fr.CDA25.SebIsma.games.gomoku;
 
-import fr.CDA25.SebIsma.games.boad.Board;
+import fr.CDA25.SebIsma.games.Game;
+import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
+import fr.CDA25.SebIsma.ui.View;
 
-public class Gomoku extends Board {
-    public Gomoku(Player[] players) {
-        super(players, 15, 15);
+public class Gomoku extends Game {
+    public Gomoku(View view) {
+        super(view, 15, 15);
     }
 
     @Override
@@ -16,7 +18,7 @@ public class Gomoku extends Board {
         boolean d = checkDir(last_move, new int[]{1, -1}, 5);
 
         if(a || b || c || d) {
-            winner = board[last_move[1]][last_move[0]].getOwner();
+            winner = board.getBoard()[last_move[1]][last_move[0]].getOwner();
             return true;
         } else
             return checkFull();

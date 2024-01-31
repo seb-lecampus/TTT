@@ -1,4 +1,4 @@
-package fr.CDA25.SebIsma.games.boad;
+package fr.CDA25.SebIsma.games.board;
 
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
