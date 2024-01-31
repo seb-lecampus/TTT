@@ -6,7 +6,7 @@ import fr.CDA25.SebIsma.players.abstractplayer.Player;
 public interface View {
     public void displayBoard(Board board, int[] lastmove);
 
-    Board getGame(Player[] players);
+    int getGame();
 
     Player getPlayer();
 

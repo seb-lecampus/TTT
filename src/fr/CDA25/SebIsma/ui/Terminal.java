@@ -12,11 +12,7 @@ public class Terminal implements View{
 
     private final InteractionUtilisateur interaction = new InteractionUtilisateur();
 
-
-
-
-    @Override
-    public Board getGame(Player[] players) {
+    public int getGame() {
         // todo automatisation for new game
         System.out.println("Choisir un jeu");
         System.out.println("1. TicTacToe");
@@ -27,19 +23,19 @@ public class Terminal implements View{
         try {
             switch (interaction.askInt()) {
                 case 1:
-                    return new TicTacToe(players);
+                    return 1;
                 case 2:
-                    return new Gomoku(players);
+                    return 2;
                 case 3:
-                    return new Puissance4(players);
+                    return 3;
                 case 0:
-                    return null;
+                    return 0;
 
             }
         } catch (Exception e) {
             System.out.println("\u001B[31m" + "Il faut entrer un chiffre" + "\u001B[0m");
         }
-        return getGame(players);
+        return getGame();
     }
 
     @Override
