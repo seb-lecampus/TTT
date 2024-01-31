@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InteractionUtilisateur {
 
-    Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
 
     public Scanner getScan() {
         return scan;

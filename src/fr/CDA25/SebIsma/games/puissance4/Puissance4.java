@@ -10,14 +10,6 @@ public class Puissance4 extends Game {
         super(view, 7,6);
     }
 
-//    @Override
-//    protected int[] processMove(int[] last_move) {
-//
-//        while(last_move[1]+1 < this.getSizeY() && this.board[last_move[1]+1][last_move[0]].getOwner() == null ) {
-//            last_move[1]+=1;
-//        }
-//        return last_move;
-//    }
 
     @Override
     protected void occupy(int[] last_move, Player current) {
@@ -35,14 +27,17 @@ public class Puissance4 extends Game {
         boolean d = checkDir(last_move, new int[]{1, -1}, 4);
 
         if(a || b || c || d) {
+
             winner = board.getBoard()[last_move[1]][last_move[0]].getOwner();
             return true;
+
         } else
             return checkFull();
     }
 
     @Override
     protected int[] getMoveFromPlayer(Board board, Player player ) {
+
         int[] tab = new int[2];
         tab[0] = player.getMoveFromPlayer1D(board, this.view);
         return tab;
