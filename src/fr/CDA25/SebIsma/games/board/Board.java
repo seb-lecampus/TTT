@@ -3,9 +3,10 @@ package fr.CDA25.SebIsma.games.boad;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 public abstract class Board {
+    
 protected Cell[][] board;
 
-protected Player[] players;
+
 protected Player winner = null;
 
 private int sizeX, sizeY;
