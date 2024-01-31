@@ -81,10 +81,10 @@ public class Terminal implements View{
 
         for (int i = 0; i < board.getSizeY() ; i++) {
 
-            this.lignBord(board.getSizeY());
+            this.lignBord(board.getSizeX());
             System.out.println();
             for (int j = 0; j < board.getSizeX() ; j++) {
-                String color = "";
+
                 if(lastMove[1] == i && lastMove[0] == j){
 
                     System.out.print("| " +"\u001B[31m" + board.getBoard()[i][j].getOwner().getRepresentation()+ " \u001B[0m");
@@ -94,7 +94,7 @@ public class Terminal implements View{
             }
             System.out.println("|");
         }
-        this.lignBord(board.getSizeY());
+        this.lignBord(board.getSizeX());
         System.out.println();
     }
 

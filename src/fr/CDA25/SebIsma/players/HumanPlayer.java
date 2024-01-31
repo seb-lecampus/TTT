@@ -14,14 +14,14 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public int[] getMoveFromPlayer2D(Board board) {
+    public int[] getMoveFromPlayer2D(Board board, View view) {
 
-        return this.view.getMove2D(board);
+        return view.getMove2D(board);
     }
 
-    public int getMoveFromPlayer1D(Board board) {
+    public int getMoveFromPlayer1D(Board board, View view) {
 
-        return this.view.getMove1D(board);
+        return view.getMove1D(board);
     }
 
 

@@ -42,9 +42,9 @@ public class Puissance4 extends Game {
     }
 
     @Override
-    protected int[] getMoveFromPlayer(Board board, Player player) {
+    protected int[] getMoveFromPlayer(Board board, Player player ) {
         int[] tab = new int[2];
-        tab[0] = player.getMoveFromPlayer1D(board);
+        tab[0] = player.getMoveFromPlayer1D(board, this.view);
         return tab;
     }
 

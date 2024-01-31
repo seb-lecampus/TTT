@@ -29,7 +29,7 @@ public abstract class Game {
 
 
     protected int[] getMoveFromPlayer(Board board, Player player){
-        return player.getMoveFromPlayer2D(board);
+        return player.getMoveFromPlayer2D (board , this.view );
     }
     protected boolean isValidMove(int[] move){
         return board.isOnBoard(move) && board.getBoard()[move[1]][move[0]].getOwner() == null;
@@ -53,16 +53,12 @@ public abstract class Game {
             //last_move = processMove(last_move);
             occupy(last_move, current);
 
-            for(Player p : players){
-                if(p != current)
-                    p.informPlayerTurn(this.board, current, last_move);
-            }
+            this.informPlayerTurn(this.board, current, last_move);
 
             ++tour;
         } while(!isEnd(last_move));
 
-        for(Player p : players)
-            p.gameEnd(winner);
+        this.gameEnd(winner, current);
     }
     protected boolean checkDir(int[] move, int[] dir, int consecutive) {
         int[] cpy = {move[0], move[1]}; // copy of move
@@ -98,5 +94,31 @@ public abstract class Game {
                 if(cell.getOwner() == null)
                     return false;
         return true;
+    }
+    public void informPlayerTurn(Board board, Player player, int[] move) {
+        this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
+        this.showLastMove(move);
+        this.view.displayBoard(board, move);
+    }
+    private void showLastMove(int[] move) {
+        String axis="" ;
+        for (int i = 0; i < move.length ; i++) {
+            if(i == 0) {
+                axis = "ligne";
+            }if(i == 1) {
+                axis = "colonne";
+            }
+            this.view.displayMessage(axis+" "+ move[i]);
+        }
+    }
+    private void gameEnd(Player winner, Player current) {
+
+        if (winner == null) {
+            this.view.displayMessage("Egalité ...");
+        } else if(winner == current) {
+            this.view.displayMessage("le joueur "+winner.getRepresentation()+" a gagné");
+        } else {
+            this.view.displayMessage("t'es nul");
+        }
     }
 }
