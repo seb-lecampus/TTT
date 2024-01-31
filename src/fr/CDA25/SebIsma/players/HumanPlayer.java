@@ -17,19 +17,18 @@ public class HumanPlayer extends Player {
     public int[] getMoveFromPlayer2D(Board board, View view) {
         int[] coordinates = new int[2];
         view.displayMessage("choisi la ligne");
-        coordinates[0] = view.getMove(board);
+        coordinates[0] = view.askInt();
         view.displayMessage("choisi la colonne");
-        coordinates[1] = view.getMove(board);
+        coordinates[1] = view.askInt();
         return coordinates;
     }
 
     public int getMoveFromPlayer1D(Board board, View view) {
 
         view.displayMessage("choisi la colonne");
-        return  view.getMove(board);
+        return  view.askInt();
 
     }
-
 
 
     @Override

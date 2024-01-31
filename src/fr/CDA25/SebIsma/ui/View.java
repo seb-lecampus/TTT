@@ -24,7 +24,7 @@ public interface View {
     */
     Player getPlayer();
 
-    int getMove(Board board);
+   int askInt();
 
     /**
     * Display generic message

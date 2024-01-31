@@ -25,11 +25,11 @@ public class Board {
         this.buildBoard(this.board);
     }
 
-        /**
-         * build the board's cell
-         * @param board the board on which construct the cells
-         */
-        private void buildBoard(Cell[][] board){
+    /**
+     * build the board's cell
+     * @param board the board on which construct the cells
+     */
+    private void buildBoard(Cell[][] board){
 
         for (int i = 0; i < this.getSizeY() ; i++) {
             for (int j = 0; j < getSizeX(); j++) {
@@ -55,8 +55,4 @@ public class Board {
 
         return true;
     }
-
-
-
-
 }

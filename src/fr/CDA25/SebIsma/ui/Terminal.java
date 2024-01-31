@@ -66,7 +66,7 @@ public class Terminal implements View{
             }
         }while(true);
     }
-    private int askInt(){
+    public int askInt(){
         do {
             try{
                 return this.interaction.getInt();
@@ -110,11 +110,7 @@ public class Terminal implements View{
     }
 
 
-    public int getMove(Board board) {
 
-        return  this.askInt();
-
-    }
 
     public int getMove1D(Board board) {
         this.displayMessage("choisi la colonne");
