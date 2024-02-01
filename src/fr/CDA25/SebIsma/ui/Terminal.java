@@ -4,8 +4,6 @@ import fr.CDA25.SebIsma.players.ArtificialPlayer;
 import fr.CDA25.SebIsma.players.HumanPlayer;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
-import java.util.concurrent.ExecutionException;
-
 public class Terminal implements View{
 
     private final InteractionUtilisateur interaction = new InteractionUtilisateur();
@@ -37,7 +35,7 @@ public class Terminal implements View{
     }
 
     @Override
-    public Player getPlayer() {
+    public Player buildPlayer() {
 
         System.out.println("créer un joueur artificiel ? (y/n) ");
         char choice = Character.toLowerCase(this.askChar());
@@ -52,7 +50,7 @@ public class Terminal implements View{
             char symbol = this.askChar();
             return new HumanPlayer(symbol/*, this*/);
         } else{
-            return getPlayer();
+            return buildPlayer();
         }
 
     }

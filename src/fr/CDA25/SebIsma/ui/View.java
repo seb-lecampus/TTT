@@ -22,7 +22,7 @@ public interface View {
     * Player selection
     * @return Player chosen
     */
-    Player getPlayer();
+    Player buildPlayer();
 
    int askInt();
 

@@ -7,7 +7,6 @@ import fr.CDA25.SebIsma.ui.View;
 
 public class HumanPlayer extends Player {
 
-    //private View view;
 
     /**
      * Ctor
@@ -36,37 +35,6 @@ public class HumanPlayer extends Player {
         return  view.askInt();
 
     }
-
-
-    /*@Override
-    public void informPlayerTurn(Board board, Player player, int[] move) {
-        this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
-        this.showLastMove(move);
-        this.view.displayBoard(board, move);
-    }
-    private void showLastMove(int[] move) {
-        String axis="" ;
-        for (int i = 0; i < move.length ; i++) {
-            if(i == 0) {
-                axis = "ligne";
-            }if(i == 1) {
-                axis = "colonne";
-            }
-            this.view.displayMessage(axis+" "+ move[i]);
-        }
-    }
-
-    @Override
-    public void gameEnd(Player winner) {
-
-        if (winner == null) {
-            this.view.displayMessage("Egalité ...");
-        } else if(winner == this) {
-            this.view.displayMessage("tu as gagné");
-        } else {
-            this.view.displayMessage("t'es nul");
-        }
-    }*/
 
 }
 

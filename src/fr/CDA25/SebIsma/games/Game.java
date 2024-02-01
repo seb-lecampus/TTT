@@ -19,7 +19,7 @@ public abstract class Game {
         this.view = view;
 
         while(playersList.size() < 2){
-            Player p = view.getPlayer();
+            Player p = view.buildPlayer();
             if(p != null)
                 playersList.add(p);
         }

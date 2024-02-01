@@ -30,13 +30,13 @@ public class GameInit {
      * Show game menu
      * @return the game chosen
      */
-    public Game getGame() {
+    public Game buildGame() {
         return switch (this.view.askGame()) {
            case 1 -> new TicTacToe(this.view);
            case 2 -> new Gomoku(this.view);
            case 3 -> new Puissance4(this.view);
            case 0 -> null;
-           default -> getGame();
+           default -> buildGame();
         };
     }
 }
