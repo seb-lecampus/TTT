@@ -16,13 +16,20 @@ public abstract class Player {
     }
 
     /**
-     *
-     * @param board
-     * @param view
-     * @return
+     * get the desired coordinate
+     * @param board board on witch to move
+     * @param view the {@link View} to use
+     * @return the desired coordinate
      */
-    public abstract int[] getMoveFromPlayer2D(Board board, View view);
-    public abstract int getMoveFromPlayer1D(Board board, View view);
+    public abstract int[] getMoveFromPlayer2D(Board board, View view); // todo ensure board is a copy
+
+    /**
+     * get the desired coordinate
+     * @param board board on witch to move
+     * @param view the {@link View} to use
+     * @return the desired coordinate
+     */
+    public abstract int getMoveFromPlayer1D(Board board, View view); // todo ensure board is a copy
     //public abstract void informPlayerTurn(Board board, Player player, int[] move);
 
     //public abstract void gameEnd(Player winner);

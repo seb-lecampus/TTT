@@ -29,7 +29,7 @@ public class HumanPlayer extends Player {
         return coordinates;
     }
 
-    @Over
+    @Override
     public int getMoveFromPlayer1D(Board board, View view) {
 
         view.displayMessage("choisi la colonne");
