@@ -30,7 +30,7 @@ public class Terminal implements View{
             System.out.println();
             for (int j = 0; j < board.getSizeX() ; j++) {
 
-                if(lastMove[1] == i && lastMove[0] == j){
+                if(lastMove != null && lastMove[1] == i && lastMove[0] == j){
 
                     System.out.print("| " +"\u001B[31m" + board.getBoard()[i][j].getOwner().getRepresentation()+ " \u001B[0m");
                 }else {

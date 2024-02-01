@@ -106,10 +106,10 @@ public abstract class Game {
         Player current ;
 
         int[] last_move = {0, 0};
-
+        this.view.displayBoard(this.board, null);
         do {
             current = players[ tour % players.length];
-
+            this.view.displayMessage("c'est au joueur \u001B[36m"+current.getRepresentation()+"\u001B[0m de jouer");
             do {
                 try {
                     last_move = getMoveFromPlayer(this.board, current);
@@ -201,10 +201,10 @@ public abstract class Game {
         for (int i = 0; i < move.length ; i++) {
 
             if(i == 0) {
-                axis = "ligne";
+                axis = "colonne";
 
             }if(i == 1) {
-                axis = "colonne";
+                axis = "ligne";
             }
 
             this.view.displayMessage(axis+" "+ move[i]);
