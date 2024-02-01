@@ -1,6 +1,8 @@
 package fr.CDA25.SebIsma.games;
 import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.games.board.Cell;
+import fr.CDA25.SebIsma.players.ArtificialPlayer;
+import fr.CDA25.SebIsma.players.HumanPlayer;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.View;
 
@@ -19,12 +21,41 @@ public abstract class Game {
         this.view = view;
 
         while(playersList.size() < 2){
-            Player p = view.buildPlayer();
+            Player p = this.buildPlayer();
             if(p != null)
                 playersList.add(p);
         }
         this.players = playersList.toArray(new Player[playersList.size()]);
         this.board = new Board(sizeX,sizeY);
+    }
+
+    public Player buildPlayer() {
+
+        this.view.displayMessage("créer un joueur artificiel ? (y/n) ");
+        char choice = Character.toLowerCase(this.askChar());
+
+        if(choice == 'y'){
+
+            ArtificialPlayer ai = new ArtificialPlayer();
+            this.view.displayMessage("l'IA a choisi le symbole "+ ai.getRepresentation() );
+            return ai;
+        } else if (choice == 'n') {
+            this.view.displayMessage("Choisir un symbol (un caractere unique)");
+            char symbol = this.askChar();
+            return new HumanPlayer(symbol/*, this*/);
+        } else{
+            return buildPlayer();
+        }
+
+    }
+    private char askChar(){
+        do{
+            try{
+                return this.view.getInteraction().getChar();
+            }catch (Exception e){
+               this.view.warnBadRepresentation();
+            }
+        }while(true);
     }
 
     /**
@@ -33,8 +64,16 @@ public abstract class Game {
      * @param player
      * @return the coordinates which the player want to occupy
      */
-    protected int[] getMoveFromPlayer(Board board, Player player){
-        return player.getMoveFromPlayer2D (board , this.view );
+    protected int[] getMoveFromPlayer(Board board, Player player) throws Exception{
+        int[] coordinates = new int[2];
+
+        view.displayMessage("choisi la colonne ");
+        coordinates[0] = player.getCoordinate(board, this.view.getInteraction() );
+
+        view.displayMessage("choisi la ligne");
+        coordinates[1] = player.getCoordinate(board,this.view.getInteraction() );
+
+        return coordinates;
     }
 
     /**
@@ -72,10 +111,18 @@ public abstract class Game {
             current = players[ tour % players.length];
 
             do {
+                try {
+                    last_move = getMoveFromPlayer(this.board, current);
+                    if (!isValidMove(last_move)) {
+                        this.view.warnBadCoordinates();
+                    } else {
+                        break;
+                    }
+                }catch(Exception e){
+                    this.view.warnBadCoordinates();
+                }
 
-                last_move = getMoveFromPlayer(this.board, current);
-
-            } while(!isValidMove(last_move));
+            } while(true);
 
             occupy(last_move, current);
 

@@ -38,9 +38,14 @@ public class Puissance4 extends Game {
     @Override
     protected int[] getMoveFromPlayer(Board board, Player player ) {
 
-        int[] tab = new int[2];
-        tab[0] = player.getMoveFromPlayer1D(board, this.view);
-        return tab;
+        int[] coordinates = new int[2];
+        view.displayMessage("choisi la colonne");
+        try {
+            coordinates[0] = player.getCoordinate(board, this.view.getInteraction());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return  coordinates;
     }
 
 

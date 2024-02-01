@@ -1,7 +1,6 @@
 package fr.CDA25.SebIsma.ui;
-
 import fr.CDA25.SebIsma.games.board.Board;
-import fr.CDA25.SebIsma.players.abstractplayer.Player;
+
 
 public interface View {
 
@@ -12,23 +11,16 @@ public interface View {
     */
     void displayBoard(Board board, int[] lastmove);
 
-    /**
-     * Game selection
-     * @return selected game ID
-     */
-    int askGame();
 
-    /**
-    * Player selection
-    * @return Player chosen
-    */
-    Player buildPlayer();
-
-   int askInt();
-
+    InteractionUtilisateur getInteraction();
     /**
     * Display generic message
     * @param message message to display
     */
     void displayMessage(String message);
+
+    void warnBadInt();
+    void warnBadRepresentation();
+
+    void warnBadCoordinates();
 }

@@ -1,36 +1,21 @@
 package fr.CDA25.SebIsma.ui;
 
-import java.util.Scanner;
 
-public class InteractionUtilisateur {
+public interface InteractionUtilisateur {
 
-    private Scanner scan = new Scanner(System.in);
 
-    public Scanner getScan() {
-        return scan;
-    }
 
     /**
      * Prompt user for integer
      * @return user choice
      * @throws Exception delegate exception handling because it can't print
      */
-    public int getInt() throws Exception {
-
-        int i = this.scan.nextInt();
-        this.scan.nextLine();
-        return i;
-    }
+    public int getInt() throws Exception;
     /**
      * Prompt user for integer
      * @return user choice
      * @throws Exception delegate exception handling because it can't print
      */
-    public char getChar() throws Exception{
-
-        return this.scan.nextLine().charAt(0);
-
-    }
-
+    public char getChar() throws Exception;
 
 }

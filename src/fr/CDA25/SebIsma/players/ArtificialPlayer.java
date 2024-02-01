@@ -1,7 +1,7 @@
 package fr.CDA25.SebIsma.players;
 import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
-import fr.CDA25.SebIsma.ui.View;
+import fr.CDA25.SebIsma.ui.InteractionUtilisateur;
 
 public class ArtificialPlayer extends Player {
 
@@ -12,15 +12,9 @@ public class ArtificialPlayer extends Player {
     }
 
     @Override
-    public int[] getMoveFromPlayer2D(Board board, View view) {
-        int[] chosenNum = new int[2] ;
-        chosenNum[0] = (int) (Math.random()*(board.getSizeX()+1));
-        chosenNum[1] = (int) (Math.random()*(board.getSizeY()+1));
-        return chosenNum;
+    public int getCoordinate(Board board, InteractionUtilisateur interaction) throws Exception {
+        return (int) (Math.random()*(board.getSizeX()+1));
     }
 
-    @Override
-    public int getMoveFromPlayer1D(Board board, View view) {
-        return  (int) (Math.random()*(board.getSizeX()+1));
-    }
+
 }
