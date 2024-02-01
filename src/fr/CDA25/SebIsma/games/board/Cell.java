@@ -2,6 +2,9 @@ package fr.CDA25.SebIsma.games.board;
 
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
+/**
+ * A cell of a {@link Board}
+ */
 public class Cell {
     private Player owner;
 

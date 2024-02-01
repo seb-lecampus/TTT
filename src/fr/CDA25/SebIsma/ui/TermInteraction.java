@@ -2,6 +2,9 @@ package fr.CDA25.SebIsma.ui;
 
 import java.util.Scanner;
 
+/**
+ * Handle user interaction in terminal
+ */
 public class TermInteraction implements InteractionUtilisateur{
 
     private final Scanner scan = new Scanner(System.in);

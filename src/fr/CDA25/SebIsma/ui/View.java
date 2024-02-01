@@ -1,7 +1,9 @@
 package fr.CDA25.SebIsma.ui;
 import fr.CDA25.SebIsma.games.board.Board;
 
-
+/**
+ * Display games
+ */
 public interface View {
 
     /**

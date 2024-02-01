@@ -5,6 +5,9 @@ import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.View;
 
+/**
+ * Gomoku game
+ */
 public class Gomoku extends Game {
     public Gomoku(View view) {
         super(view, 15, 15);

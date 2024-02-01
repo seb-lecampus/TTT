@@ -3,20 +3,19 @@ package fr.CDA25.SebIsma.players.abstractplayer;
 import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.ui.InteractionUtilisateur;
 
+/**
+ * Handle player representation
+ */
 public abstract class Player {
-     private final char representation;
-
+    private final char representation;
 
     public Player(char representation){
         this.representation = representation;
     }
 
-
     public char getRepresentation() {
         return representation;
     }
-
-
 
     /**
      * get the desired coordinate

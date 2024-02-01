@@ -8,6 +8,9 @@ import fr.CDA25.SebIsma.ui.View;
 
 import java.util.ArrayList;
 
+/**
+ * Game controller
+ */
 public abstract class Game {
 
     protected Board board;
@@ -16,6 +19,13 @@ public abstract class Game {
 
     protected Player winner = null;
     protected View view;
+
+    /**
+     * Ctor
+     * @param view {@link View} to use
+     * @param sizeX number of {@link Cell} in width
+     * @param sizeY number of {@link Cell} in height
+     */
     public Game(View view ,int sizeX ,int sizeY){
         ArrayList<Player> playersList = new ArrayList<Player>(2);
         this.view = view;
@@ -29,9 +39,13 @@ public abstract class Game {
         this.board = new Board(sizeX,sizeY);
     }
 
+    /**
+     * Build a {@link Player}
+     * @return a {@link Player} built according user choice
+     */
     public Player buildPlayer() {
 
-        this.view.displayMessage("créer un joueur artificiel ? (y/n) ");
+        this.view.displayMessage("créer un joueur artificiel ? (y/n) "); // todo message in view
         char choice = Character.toLowerCase(this.askChar());
 
         if(choice == 'y'){
@@ -79,7 +93,7 @@ public abstract class Game {
     /**
      * check if the cell which choose by the player is valid
      * @param move
-     * @return boolean
+     * @return is valid cell or not
      */
     protected boolean isValidMove(int[] move){
         return board.isOnBoard(move) && board.getBoard()[move[1]][move[0]].getOwner() == null;

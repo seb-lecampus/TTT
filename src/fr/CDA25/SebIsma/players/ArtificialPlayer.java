@@ -3,6 +3,9 @@ import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.InteractionUtilisateur;
 
+/**
+ * An artificial player
+ */
 public class ArtificialPlayer extends Player {
 
     public ArtificialPlayer() {

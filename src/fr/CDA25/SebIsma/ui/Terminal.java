@@ -1,7 +1,9 @@
 package fr.CDA25.SebIsma.ui;
 import fr.CDA25.SebIsma.games.board.Board;
 
-
+/**
+ * Display game in terminal
+ */
 public class Terminal implements View{
 
     private final InteractionUtilisateur interaction = new TermInteraction();
@@ -11,7 +13,6 @@ public class Terminal implements View{
      * Prompt user for integer
      * @return user choice
      */
-
     @Override
     public InteractionUtilisateur getInteraction() {
         return this.interaction;

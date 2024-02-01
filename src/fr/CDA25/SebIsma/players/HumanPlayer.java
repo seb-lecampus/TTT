@@ -6,8 +6,10 @@ import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.InteractionUtilisateur;
 import fr.CDA25.SebIsma.ui.View;
 
+/**
+ * Player with human interaction
+ */
 public class HumanPlayer extends Player {
-
 
     /**
      * Ctor

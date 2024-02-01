@@ -5,11 +5,13 @@ import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.View;
 
+/**
+ * Puissance 4 game
+ */
 public class Puissance4 extends Game {
     public Puissance4(View view) {
         super(view, 7,6);
     }
-
 
     @Override
     protected void occupy(int[] last_move, Player current) {
@@ -39,7 +41,7 @@ public class Puissance4 extends Game {
     protected int[] getMoveFromPlayer(Board board, Player player ) {
 
         int[] coordinates = new int[2];
-        view.displayMessage("choisi la colonne");
+        view.displayMessage("choisi la colonne"); // todo jkhjkhjk
         try {
             coordinates[0] = player.getCoordinate(board, this.view.getInteraction());
         } catch (Exception e) {

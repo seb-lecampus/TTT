@@ -2,7 +2,9 @@ package fr.CDA25.SebIsma.games.tictactoe;
 import fr.CDA25.SebIsma.games.Game;
 import fr.CDA25.SebIsma.ui.View;
 
-
+/**
+ * TicTacToe game
+ */
 public class TicTacToe extends Game {
     public TicTacToe(View view) {
         super(view, 3,3);
