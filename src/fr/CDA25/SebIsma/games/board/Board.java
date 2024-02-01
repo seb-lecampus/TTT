@@ -1,7 +1,7 @@
 package fr.CDA25.SebIsma.games.board;
 
 /**
- * Handle {@Link Cell}s
+ * Handle {@link Cell}s
  */
 public class Board {
 

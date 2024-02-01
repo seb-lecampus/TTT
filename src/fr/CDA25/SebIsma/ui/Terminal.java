@@ -10,7 +10,6 @@ public class Terminal implements View{
     /**
      * Prompt user for integer
      * @return user choice
-     * @throws Exception delegate exception handling because it can't print
      */
 
     @Override

@@ -54,7 +54,6 @@ public class GameInit {
     /**
      * Prompt user for integer
      * @return user choice
-     * @throws Exception delegate exception handling because it can't print
      */
     public int askGame() {
 
