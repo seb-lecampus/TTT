@@ -32,7 +32,7 @@ public class GameInit {
             try{
                 return this.view.getInteraction().getInt();
             }catch (Exception e){
-                this.view.displayMessage("\u001B[31m" + "Il faut entrer un chiffre" + "\u001B[0m");
+                this.view.warnBadInt();
             }
         }while(true);
     }

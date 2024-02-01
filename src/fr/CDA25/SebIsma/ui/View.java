@@ -19,8 +19,24 @@ public interface View {
     */
     void displayMessage(String message);
 
+    /**
+     * warn about bad int
+     */
     void warnBadInt();
+
+    /**
+     * warn about bad representation
+     */
     void warnBadRepresentation();
 
+    /**
+     * warn about bad coordinates
+     */
     void warnBadCoordinates();
+
+    /**
+     * show player's turn
+     * @param representation
+     */
+    void informPlayerTurn(char representation);
 }

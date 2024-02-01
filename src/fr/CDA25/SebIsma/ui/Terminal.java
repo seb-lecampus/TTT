@@ -66,9 +66,16 @@ public class Terminal implements View{
     }
 
     @Override
+    public void informPlayerTurn(char representation) {
+        System.out.println("le joueur "+ representation+" a joué :");
+    }
+
+    @Override
     public void warnBadCoordinates() {
         System.out.println("\u001B[31m" + "case prise ou hors tableau" + "\u001B[0m");
     }
+
+
 }
 
 

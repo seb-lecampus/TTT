@@ -185,7 +185,7 @@ public abstract class Game {
      */
     public void informPlayerTurn(Board board, Player player, int[] move) {
 
-        this.view.displayMessage("le joueur "+ player.getRepresentation()+" a joué :");
+        this.view.informPlayerTurn(player.getRepresentation());
         this.showLastMove(move);
         this.view.displayBoard(board, move);
 
