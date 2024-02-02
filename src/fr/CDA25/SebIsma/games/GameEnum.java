@@ -5,6 +5,9 @@ import fr.CDA25.SebIsma.games.puissance4.Puissance4;
 import fr.CDA25.SebIsma.games.tictactoe.TicTacToe;
 import fr.CDA25.SebIsma.ui.View;
 
+/**
+ * Enum containing all instantiable game
+ */
 public enum GameEnum {
     EXIT (){
         @Override
@@ -44,6 +47,11 @@ public enum GameEnum {
         }
     };
 
+    /**
+     * Get {@link Game} from the enum
+     * @param view the {@link View} to use by the instanced game
+     * @return instance of a {@link Game}
+     */
     public Game getGame(View view){
         return null;
     }

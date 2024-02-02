@@ -15,8 +15,12 @@ public interface View {
     */
     void displayBoard(Board board, int[] lastmove);
 
-
+    /**
+     * get the {@link InteractionUtilisateur} related to the view
+     * @return a suitable {@link InteractionUtilisateur} for this view
+     */
     InteractionUtilisateur getInteraction();
+
     /**
     * Display generic message
     * @param message message to display
@@ -43,13 +47,49 @@ public interface View {
      * @param representation
      */
     void informPlayerTurn(char representation);
+
+    /**
+     * show choosing line message
+     */
     void chooselignMessage();
+
+    /**
+     * show choosing column message
+     */
     void chooseColumnMessage();
+
+    /**
+     * show message to choose a {@link Player}
+     */
     void showChooseIaMessage();
+
+    /**
+     * show played column
+     * @param moveX
+     */
     void showPlayedcolumn(int moveX);
+
+    /**
+     * show played line
+     * @param moveY
+     */
     void showPlayedlign(int moveY);
+
+    /**
+     * show message to choose a {@link Player} representation
+     */
     void chooseSymbol();
+
+    /**
+     * show representation selected by ia
+     * @param representation
+     */
     void showChosenIaSymbol(char representation);
+
+    /**
+     * show witch {@link Player} play
+     * @param representation
+     */
     void showTurnPlayer(char representation);
 
     /**
@@ -57,6 +97,11 @@ public interface View {
      * @param winner the player who win
      * @param current the current player
      */
-  void gameEndMessage(Player winner, Player current);
-   void showMenu(GameEnum[] games);
+    void gameEndMessage(Player winner, Player current);
+
+    /**
+     * show playable games
+     * @param games playable games
+     */
+    void showMenu(GameEnum[] games);
 }
