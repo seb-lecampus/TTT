@@ -25,6 +25,7 @@ public class Terminal implements View{
      * @param board board to display
      * @param lastMove last move played
      */
+    @Override
     public void displayBoard(Board board, int[] lastMove){
 
         for (int i = 0; i < board.getSizeY() ; i++) {
