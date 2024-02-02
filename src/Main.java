@@ -1,4 +1,4 @@
-import fr.CDA25.SebIsma.GameInit;
+import fr.CDA25.SebIsma.games.GameInit;
 import fr.CDA25.SebIsma.games.Game;
 
 

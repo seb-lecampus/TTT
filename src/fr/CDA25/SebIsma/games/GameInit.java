@@ -1,4 +1,4 @@
-package fr.CDA25.SebIsma;
+package fr.CDA25.SebIsma.games;
 
 import fr.CDA25.SebIsma.games.Game;
 import fr.CDA25.SebIsma.games.GameEnum;
