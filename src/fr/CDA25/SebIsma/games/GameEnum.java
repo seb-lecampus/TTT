@@ -6,10 +6,21 @@ import fr.CDA25.SebIsma.games.tictactoe.TicTacToe;
 import fr.CDA25.SebIsma.ui.View;
 
 public enum GameEnum {
+    EXIT (){
+        @Override
+        public String toString() {
+            return "Quitter";
+        }
+    },
     TICTACTOE () {
         @Override
         public Game getGame(View view) {
             return new TicTacToe(view);
+        }
+
+        @Override
+        public String toString() {
+            return "Tic-tac-toe";
         }
     },
     GOMOKU () {
@@ -17,11 +28,19 @@ public enum GameEnum {
         public Game getGame(View view) {
             return new Gomoku(view);
         }
+        @Override
+        public String toString() {
+            return "Gomoku";
+        }
     },
     PUISSANCE4 () {
         @Override
         public Game getGame(View view) {
             return new Puissance4(view);
+        }
+        @Override
+        public String toString() {
+            return "Puissance 4";
         }
     };
 

@@ -13,6 +13,7 @@ public class Puissance4 extends Game {
         super(view, 7,6);
     }
 
+
     @Override
     protected void occupy(int[] last_move, Player current) {
         while(last_move[1]+1 < this.board.getSizeY() && this.board.getBoard()[last_move[1]+1][last_move[0]].getOwner() == null ) {
@@ -41,7 +42,7 @@ public class Puissance4 extends Game {
     protected int[] getMoveFromPlayer(Board board, Player player ) {
 
         int[] coordinates = new int[2];
-        view.displayMessage("choisi la colonne"); // todo jkhjkhjk
+        view.chooseColumnMessage();
         try {
             coordinates[0] = player.getCoordinate(board, this.view.getInteraction());
         } catch (Exception e) {

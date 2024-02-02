@@ -1,5 +1,7 @@
 package fr.CDA25.SebIsma.ui;
+import fr.CDA25.SebIsma.games.GameEnum;
 import fr.CDA25.SebIsma.games.board.Board;
+import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
 /**
  * Display game in terminal
@@ -75,7 +77,64 @@ public class Terminal implements View{
         System.out.println("\u001B[31m" + "case prise ou hors tableau" + "\u001B[0m");
     }
 
+   public void showChooseIaMessage(){
+        System.out.println("créer un joueur artificiel ? (y/n) ");
+   }
 
+    @Override
+    public void chooseColumnMessage() {
+        System.out.println("choisi la colonne");
+    }
+    @Override
+    public void chooselignMessage() {
+        System.out.println("choisi la ligne");
+    }
+
+    @Override
+    public void showPlayedcolumn(int moveX) {
+        System.out.println("colonne "+moveX);
+    }
+
+    @Override
+    public void chooseSymbol() {
+       System.out.println("Choisir un symbol (un caractere unique)");
+    }
+
+    @Override
+    public void showPlayedlign(int moveY){
+        System.out.println("ligne "+moveY);
+    }
+
+    @Override
+    public void showChosenIaSymbol(char representation) {
+        System.out.println("l'IA a choisi le symbole ");
+    }
+
+    @Override
+    public void showTurnPlayer(char representation) {
+        System.out.println("c'est au joueur \u001B[36m"+ representation+"\u001B[0m de jouer");
+    }
+
+     public void gameEndMessage(Player winner, Player current) {
+
+        if (winner == null) {
+            this.displayMessage("Egalité ...");
+        } else if(winner == current) {
+            this.displayMessage("le joueur "+winner.getRepresentation()+" a gagné");
+        } else {
+            this.displayMessage("t'es nul");
+        }
+    }
+    public void showMenu(GameEnum[] games){
+
+        this.displayMessage("Choisir un jeu");
+        int i = 0;
+         for(GameEnum game : games){
+            this.displayMessage(i+"." + game.toString());
+            i++;
+        }
+
+    }
 }
 
 

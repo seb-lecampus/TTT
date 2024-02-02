@@ -45,16 +45,16 @@ public abstract class Game {
      */
     public Player buildPlayer() {
 
-        this.view.displayMessage("créer un joueur artificiel ? (y/n) "); // todo message in view
+        this.view.showChooseIaMessage();
         char choice = Character.toLowerCase(this.askChar());
 
         if(choice == 'y'){
 
             ArtificialPlayer ai = new ArtificialPlayer();
-            this.view.displayMessage("l'IA a choisi le symbole "+ ai.getRepresentation() );
+            this.view.showChosenIaSymbol(ai.getRepresentation());
             return ai;
         } else if (choice == 'n') {
-            this.view.displayMessage("Choisir un symbol (un caractere unique)");
+            this.view.chooseSymbol();
             char symbol = this.askChar();
             return new HumanPlayer(symbol/*, this*/);
         } else{
@@ -81,10 +81,10 @@ public abstract class Game {
     protected int[] getMoveFromPlayer(Board board, Player player) throws Exception{
         int[] coordinates = new int[2];
 
-        view.displayMessage("choisi la colonne ");
+        view.chooseColumnMessage();
         coordinates[0] = player.getCoordinate(board, this.view.getInteraction() );
 
-        view.displayMessage("choisi la ligne");
+        view.chooselignMessage();
         coordinates[1] = player.getCoordinate(board,this.view.getInteraction() );
 
         return coordinates;
@@ -123,7 +123,7 @@ public abstract class Game {
         this.view.displayBoard(this.board, null);
         do {
             current = players[ tour % players.length];
-            this.view.displayMessage("c'est au joueur \u001B[36m"+current.getRepresentation()+"\u001B[0m de jouer");
+            this.view.showTurnPlayer(current.getRepresentation());
             do {
                 try {
                     last_move = getMoveFromPlayer(this.board, current);
@@ -146,7 +146,7 @@ public abstract class Game {
 
         } while(!isEnd(last_move));
 
-        this.gameEndMessage(winner, current);
+        this.view.gameEndMessage(winner, current);
     }
 
 
@@ -200,44 +200,13 @@ public abstract class Game {
     public void informPlayerTurn(Board board, Player player, int[] move) {
 
         this.view.informPlayerTurn(player.getRepresentation());
-        this.showLastMove(move);
+        this.view.showPlayedcolumn(move[0]);
+        this.view.showPlayedlign(move[1]);
         this.view.displayBoard(board, move);
 
     }
 
-    /**
-     * show messages with coordinates of last move
-     * @param move last given coordinates
-     */
-    private void showLastMove(int[] move) {
-        String axis="" ;
 
-        for (int i = 0; i < move.length ; i++) {
 
-            if(i == 0) {
-                axis = "colonne";
 
-            }if(i == 1) {
-                axis = "ligne";
-            }
-
-            this.view.displayMessage(axis+" "+ move[i]);
-        }
-    }
-
-    /**
-     * show message of game's end
-     * @param winner the player who win
-     * @param current the current player
-     */
-    private void gameEndMessage(Player winner, Player current) {
-
-        if (winner == null) {
-            this.view.displayMessage("Egalité ...");
-        } else if(winner == current) {
-            this.view.displayMessage("le joueur "+winner.getRepresentation()+" a gagné");
-        } else {
-            this.view.displayMessage("t'es nul");
-        }
-    }
 }
