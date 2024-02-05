@@ -7,7 +7,7 @@ import fr.CDA25.SebIsma.ui.View;
  */
 public class GameInit {
 
-    private Game game;
+
     private final View view ;
 
 
@@ -38,8 +38,16 @@ public class GameInit {
      * @return user choice
      */
     public Game askGame() {
+
         GameEnum[] games = GameEnum.values();
         this.view.showMenu(games);
-        return games[this.askInt()].getGame(this.view);
+
+        try {
+            return games[this.askInt()].getGame(this.view);
+        } catch (Exception e) {
+            this.view.errorMenuMessage();
+            return this.askGame();
+        }
     }
+
 }

@@ -104,4 +104,6 @@ public interface View {
      * @param games playable games
      */
     void showMenu(GameEnum[] games);
+
+    void errorMenuMessage();
 }

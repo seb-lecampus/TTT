@@ -136,6 +136,11 @@ public class Terminal implements View{
         }
 
     }
+
+    @Override
+    public void errorMenuMessage() {
+        displayMessage("\u001B[31m choisi un chiffre dans la liste ... \u001B[0m");
+    }
 }
 
 

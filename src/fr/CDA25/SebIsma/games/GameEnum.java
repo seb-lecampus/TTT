@@ -9,7 +9,7 @@ import fr.CDA25.SebIsma.ui.View;
  * Enum containing all instantiable game
  */
 public enum GameEnum {
-    EXIT (){
+        EXIT (){
         @Override
         public String toString() {
             return "Quitter";
@@ -46,6 +46,7 @@ public enum GameEnum {
             return "Puissance 4";
         }
     };
+
 
     /**
      * Get {@link Game} from the enum
