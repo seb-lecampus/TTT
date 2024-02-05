@@ -3,12 +3,16 @@ import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.games.board.Cell;
 import fr.CDA25.SebIsma.players.ArtificialPlayer;
 import fr.CDA25.SebIsma.players.HumanPlayer;
+import fr.CDA25.SebIsma.players.OnlinePlayer;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.Terminal;
 import fr.CDA25.SebIsma.ui.View;
 
 import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Game controller
@@ -92,7 +96,16 @@ public abstract class Game implements Serializable {
             this.view.chooseSymbol();
             char symbol = this.askChar();
             return new HumanPlayer(symbol/*, this*/);
-        } else{
+        } else if (choice == 'e'){
+            try {
+                Socket player;
+                ServerSocket server = new ServerSocket(5005);
+                player = server.accept();
+                return new OnlinePlayer(player);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
             return buildPlayer();
         }
 
