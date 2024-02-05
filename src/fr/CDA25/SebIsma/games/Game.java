@@ -43,7 +43,7 @@ public abstract class Game {
      * Build a {@link Player}
      * @return a {@link Player} built according user choice
      */
-    public Player buildPlayer() {
+    protected Player buildPlayer() {
 
         this.view.showChooseIaMessage();
         char choice = Character.toLowerCase(this.askChar());
@@ -62,7 +62,7 @@ public abstract class Game {
         }
 
     }
-    private char askChar(){
+    protected char askChar(){
         do{
             try{
                 return this.view.getInteraction().getChar();
@@ -197,7 +197,7 @@ public abstract class Game {
      * @param player the current player
      * @param move the last move of previous player
      */
-    public void informPlayerTurn(Board board, Player player, int[] move) {
+    protected void informPlayerTurn(Board board, Player player, int[] move) {
 
         this.view.informPlayerTurn(player.getRepresentation());
         this.view.showPlayedcolumn(move[0]);
