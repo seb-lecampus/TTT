@@ -39,6 +39,11 @@ public class Puissance4 extends Game {
     }
 
     @Override
+    public String getName() {
+        return "Puissance 4";
+    }
+
+    @Override
     protected int[] getMoveFromPlayer(Board board, Player player ) {
 
         int[] coordinates = new int[2];

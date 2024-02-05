@@ -1,9 +1,11 @@
 package fr.CDA25.SebIsma.games.board;
 
+import java.io.Serializable;
+
 /**
  * Handle {@link Cell}s
  */
-public class Board {
+public class Board implements Serializable {
 
     private final Cell[][] board;
 

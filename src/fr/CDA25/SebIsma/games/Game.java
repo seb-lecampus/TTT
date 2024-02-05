@@ -4,21 +4,39 @@ import fr.CDA25.SebIsma.games.board.Cell;
 import fr.CDA25.SebIsma.players.ArtificialPlayer;
 import fr.CDA25.SebIsma.players.HumanPlayer;
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
+import fr.CDA25.SebIsma.ui.Terminal;
 import fr.CDA25.SebIsma.ui.View;
 
+import java.io.*;
 import java.util.ArrayList;
 
 /**
  * Game controller
  */
-public abstract class Game {
+public abstract class Game implements Serializable {
+
 
     protected Board board;
 
     protected Player[] players;
 
-    protected Player winner = null;
-    protected View view;
+    protected int tour =0;
+    transient protected Player winner = null;
+    transient protected View view;
+
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public int getTour() {
+        return tour;
+    }
+
 
     /**
      * Ctor
@@ -27,18 +45,35 @@ public abstract class Game {
      * @param sizeY number of {@link Cell} in height
      */
     public Game(View view ,int sizeX ,int sizeY){
-        ArrayList<Player> playersList = new ArrayList<Player>(2);
         this.view = view;
+        try {
+             Game game = loadGame();
+             this.board = game.getBoard();
+             this.tour = game.getTour();
+             this.players = game.getPlayers();
 
-        while(playersList.size() < 2){
-            Player p = this.buildPlayer();
-            if(p != null)
-                playersList.add(p);
+        }catch(Exception e) {
+            ArrayList<Player> playersList = new ArrayList<Player>(2);
+
+            while (playersList.size() < 2) {
+                Player p = this.buildPlayer();
+                if (p != null)
+                    playersList.add(p);
+            }
+            this.players = playersList.toArray(new Player[playersList.size()]);
+            this.board = new Board(sizeX, sizeY);
         }
-        this.players = playersList.toArray(new Player[playersList.size()]);
-        this.board = new Board(sizeX,sizeY);
+
     }
 
+    private Game loadGame() throws Exception{
+
+        final FileInputStream fichier = new FileInputStream("C:\\Users\\ismael.vas\\Desktop\\github\\bibliotheque_de_jeux\\sauvegarde\\"+ this.getName());
+        ObjectInputStream ois = new ObjectInputStream(fichier);
+        return (Game) ois.readObject();
+
+    }
+    abstract public String getName();
     /**
      * Build a {@link Player}
      * @return a {@link Player} built according user choice
@@ -115,13 +150,15 @@ public abstract class Game {
      */
     public void play(){
 
-        int tour = 0;
 
         Player current ;
 
         int[] last_move = {0, 0};
         this.view.displayBoard(this.board, null);
         do {
+
+            this.saveGame();
+
             current = players[ tour % players.length];
             this.view.showTurnPlayer(current.getRepresentation());
             do {
@@ -147,6 +184,15 @@ public abstract class Game {
         } while(!isEnd(last_move));
 
         this.view.gameEndMessage(winner, current);
+    }
+    private void saveGame(){
+        try {
+            final FileOutputStream fichier = new FileOutputStream("C:\\Users\\ismael.vas\\Desktop\\github\\bibliotheque_de_jeux\\sauvegarde/"+this.getName());
+            ObjectOutputStream oos = new ObjectOutputStream(fichier);
+            oos.writeObject(this);
+        } catch (Exception e) {
+            System.out.println("proleme");
+        }
     }
 
 

@@ -2,10 +2,12 @@ package fr.CDA25.SebIsma.games.board;
 
 import fr.CDA25.SebIsma.players.abstractplayer.Player;
 
+import java.io.Serializable;
+
 /**
  * A cell of a {@link Board}
  */
-public class Cell {
+public class Cell implements Serializable {
     private Player owner;
 
     /**

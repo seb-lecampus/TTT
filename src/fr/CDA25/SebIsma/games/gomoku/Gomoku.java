@@ -10,6 +10,11 @@ public class Gomoku extends Game {
         super(view, 15, 15);
     }
 
+
+    public  String getName(){
+        return "Gomoku";
+    };
+
     @Override
     protected boolean isEnd(int[] last_move) {
         boolean a = checkDir(last_move, new int[]{1, 1}, 5);

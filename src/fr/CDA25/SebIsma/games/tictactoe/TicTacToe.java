@@ -12,6 +12,11 @@ public class TicTacToe extends Game {
 
 
     @Override
+    public String getName() {
+        return "Tic-tac-toe";
+    }
+
+    @Override
     protected boolean isEnd(int[] last_move) {
         boolean a = checkDir(last_move, new int[]{1, 1}, 3);
         boolean b = checkDir(last_move, new int[]{1, 0}, 3);
