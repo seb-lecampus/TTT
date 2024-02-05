@@ -1,8 +1,5 @@
 package fr.CDA25.SebIsma.games.gomoku;
-
 import fr.CDA25.SebIsma.games.Game;
-import fr.CDA25.SebIsma.games.board.Board;
-import fr.CDA25.SebIsma.players.abstractplayer.Player;
 import fr.CDA25.SebIsma.ui.View;
 
 /**
