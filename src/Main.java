@@ -12,6 +12,6 @@ public class Main {
             } else {
                 break;
             }
-        } while (true);;
+        } while (true);
     }
 }
