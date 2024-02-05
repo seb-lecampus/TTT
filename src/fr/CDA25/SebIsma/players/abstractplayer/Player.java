@@ -3,10 +3,12 @@ package fr.CDA25.SebIsma.players.abstractplayer;
 import fr.CDA25.SebIsma.games.board.Board;
 import fr.CDA25.SebIsma.ui.InteractionUtilisateur;
 
+import java.io.Serializable;
+
 /**
  * Handle player representation
  */
-public abstract class Player {
+public abstract class Player implements Serializable {
     private final char representation;
 
     public Player(char representation){
@@ -19,7 +21,6 @@ public abstract class Player {
 
     /**
      * get the desired coordinate
-     *
      * @param board board on witch to move
      * @param interaction
      * @return the desired coordinate
